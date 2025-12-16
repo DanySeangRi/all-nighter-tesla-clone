@@ -1,81 +1,117 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { Play, Pause } from "lucide-react";
 
-const VideoShowcase = ({ videoSrc, posterSrc, title, description }) => {
+const VideoShowcase = ({ videoSrc, posterSrc, title, description, layout = "full", showText = true }) => {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, []);
+
+  const handleVideoError = () => {
+    setHasError(true);
+  };
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const containerClass = layout === "full" 
+    ? "w-full px-12 mb-0" 
+    : "max-w-7xl mx-auto px-8 mt-30 mb-20";
+
+  const videoClass = layout === "full"
+    ? "w-full h-screen object-cover rounded-sm"
+    : "w-full h-[85vh] object-cover rounded-xl shadow-2xl";
+
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="relative w-full rounded-lg overflow-hidden shadow-lg">
-        <video
-          className="w-full"
-          poster={posterSrc}
-          controls
-          preload="metadata"
-        >
-          <source src={videoSrc} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      
-      {title && (
-        <div className="mt-8">
-          <h2 className="text-3xl font-semibold mb-3">{title}</h2>
-          {description && (
-            <p className="text-base text-gray-700 max-w-3xl leading-relaxed">
-              {description}
-            </p>
+    <section className={`w-full relative ${layout === "full" ? "mb-0" : "py-12"}`}>
+      <div className={containerClass}>
+        <div className="relative w-full group">
+          {hasError ? (
+            <div className={`${videoClass} -black flex items-center justify-center`}>
+              <div className="text-center p-8">
+              </div>
+            </div>
+          ) : (
+            <video
+              ref={videoRef}
+              className={videoClass}
+              poster={posterSrc}
+              muted
+              loop
+              playsInline
+              onError={handleVideoError}
+            >
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          )}
+          
+          {!hasError && (
+            <button
+              onClick={togglePlayPause}
+              className="absolute bottom-8 left-8 bg-gray-500 bg-opacity-50 hover:bg-black hover:bg-opacity-70 text-white rounded-sm  p-2 transition-all duration-300 z-10 backdrop-blur-sm"
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+            >
+              {isPlaying ? (
+                <Pause className="w-6 h-6" />
+              ) : (
+                <Play className="w-6 h-6 ml-0.5" />
+              )}
+            </button>
           )}
         </div>
-      )}
+      </div>
     </section>
   );
 };
 
-const VideoShowcaseList = () => {
+const TeslaModelYShowcase = () => {
   const videos = [
     {
-      videoSrc: "/videos/model-y-taillight.mp4",
-      posterSrc: "/images/learn-more/Model-Y-Standard-Software-Desktop-Poster.avif",
-      title: "Distinctive Design",
-      description: "The sleek, aerodynamic design of Model Y features distinctive LED taillights and a modern aesthetic that turns heads wherever you go."
+      videoSrc: "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto/Homepage-Demo-Drive-Desktop-NA.mp4",
+      posterSrc: "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-Y-Main-Hero-Desktop-LHD.jpg",
+      layout: "full"
     },
     {
-      videoSrc: "/videos/model-y-driving.mp4",
-      posterSrc: "/images/learn-more/Model-Y-Standard-Software-Desktop-Poster.avif",
-      title: "More Than a Car",
-      description: "Model Y Standard includes all the fun. Park at your favorite spot and play music, movies and games through the center 15.4-inch touchscreen.* Activate Camp Mode to keep your cabin comfortable while you stream, relax or spend the night."
+      videoSrc: "https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto/Homepage-Test-Drive-Desktop-NA.mp4",
+      posterSrc: "https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-Y-Specs-Desktop.jpg",
+      layout: "contained",
     },
-    {
-      videoSrc: "/videos/model-y-theater.mp4",
-      posterSrc: "/images/learn-more/Model-Y-Standard-Theater-Desktop-Poster-EMEA.avif",
-      title: "Transform Your Car Into a Theater",
-      description: "Enjoy movies and shows on the stunning 15.4-inch touchscreen display. With premium audio and comfortable seating, your Model Y becomes the ultimate entertainment destination."
-    },
-    {
-      videoSrc: "/videos/model-y-aerial.mp4",
-      posterSrc: "/images/learn-more/Model-Y-Standard-Software-Desktop-Poster.avif",
-      title: "Adventure Awaits",
-      description: "Whether cruising through the city or exploring scenic routes, Model Y delivers an exceptional driving experience with impressive range and performance."
-    },
-    {
-      videoSrc: "/videos/model-y-autopilot.mp4",
-      posterSrc: "/images/learn-more/Model-Y-Standard-FSD-Desktop-Poster.avif",
-      title: "Advanced Autopilot",
-      description: "Experience the future of driving with advanced autopilot features. Model Y's intelligent systems provide enhanced safety and convenience for every journey."
-    }
   ];
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full bg-white min-h-screen">
       {videos.map((video, index) => (
         <VideoShowcase
           key={index}
           videoSrc={video.videoSrc}
           posterSrc={video.posterSrc}
-          title={video.title}
-          description={video.description}
+          layout={video.layout}
+          showText={video.showText !== false}
         />
       ))}
     </div>
+
+    
   );
 };
 
-export default VideoShowcaseList;
+export default TeslaModelYShowcase;
