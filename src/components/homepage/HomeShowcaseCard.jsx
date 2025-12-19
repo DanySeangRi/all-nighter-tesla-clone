@@ -33,7 +33,7 @@ const HomeShowcaseCard = ({
                 <div className=" gap-6  flex-col p-4 md:p-10 w-full h-96.5 item-end justify-end flex">
                     <div>
                       <h1 className="text-[48px] text-white relative top-2">{name}</h1>
-                      <p className={`text-white ${underline} text-[16px]`}>
+                      <p className={`text-white ${underline} underline-offset-4 text-[16px]`}>
                         {description}
                       </p>
                     </div>
