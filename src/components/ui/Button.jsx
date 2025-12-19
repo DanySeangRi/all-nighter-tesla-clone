@@ -1,17 +1,16 @@
 import React from 'react'
 
-export default function Button({name,bgColor,textColor,width,height}) {
+export default function Button({title ,css}) {
   return (
-    <div className={`
-    ${width} ${height}
-    ${bgColor} 
+    
+    <button className={`
+  ${css}
+  hover:opacity-85
     rounded-sm 
     flex justify-center
      items-center p-1 
-     text-sm ${textColor}`}>
-      
-      <button>{name}</button>
-
-    </div>
+     text-sm sm:text-sm `}>
+      {title}
+    </button>
   )
 }
