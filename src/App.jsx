@@ -1,13 +1,11 @@
 import React from "react";
-import ShopNavbar from "./components/layout/ShopNavbar";
-import Navbar from "./components/layout/Navbar";
-
+import ModelYFeatures from "./components/learn-more/ModelYFeatures.jsx";
 
 export default function App() {
   return (
-    <>
-    <ShopNavbar/>
-    </>
+    <div>
+      <ModelYFeatures />
+    </div>
   );
 }
 
