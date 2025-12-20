@@ -11,7 +11,7 @@ const HomeShowcaseCard = ({
   description,
 }) => {
   return (
-    <div className="relative w-82.5 h-130 sm:w-5xl sm:h-145 rounded-[10px] overflow-hidden flex-shrink-0">
+    <div className="relative w-82.5 h-130 sm:w-5xl sm:h-145 rounded-[10px] overflow-hidden shrink-0">
           {/* Responsive image */}
           <picture>
             <source media="(min-width: 640px)" srcSet={desktopImage} />
