@@ -1,6 +1,9 @@
 import React from "react";
-import Hero from "./components/ui/Hero";
+import Home from "../pages/Home";
 
 export default function App() {
-  return <></>;
+  return <>
+  <Home/>
+  
+  </>;
 }
