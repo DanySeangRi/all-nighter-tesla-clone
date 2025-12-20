@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 import Footer from './components/learn-more/Footer';
 
-export default function App() {
-  const containerClass = 'w-full bg-gray-500 p-4'
+function App() {
   return (
-    <div>
-      <footer containerClass={containerClass}/>
+    <div className="min-h-screen">
+      <Footer />
     </div>
   );
 }
+export default App;
 
 
