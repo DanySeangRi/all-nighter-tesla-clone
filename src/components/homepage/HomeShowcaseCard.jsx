@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "../ui/Button";
-import { cardBtn, } from "../ui/uiStyle";
+
 
 const HomeShowcaseCard = ({
   title,
@@ -9,6 +8,8 @@ const HomeShowcaseCard = ({
   name,
   underline,
   description,
+  btn1,
+  btn2,
 }) => {
   return (
     <div className="relative w-82.5 h-130 sm:w-5xl sm:h-145 rounded-[10px] overflow-hidden shrink-0">
@@ -39,8 +40,8 @@ const HomeShowcaseCard = ({
                     </div>
                   
                     <div className="flex gap-2 ">
-                      <Button title={cardBtn[0].title} css={cardBtn[0].css} />
-                      <Button title={cardBtn[1].title} css={cardBtn[1].css} />
+                     {btn1}
+                      {btn2}
                     </div>
                 </div>
 
