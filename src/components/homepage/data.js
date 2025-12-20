@@ -28,6 +28,27 @@ const powerSupplyData = [
     description: "Massive Batteries for Massive Energy Support",
   },
   {
+const HomeShowcaseData = [
+  {
+    title: "Luxury Sedan",
+    imageMobile:
+      "./src/assets/images/homepage/Homepage-Card-Model-S-Mobile-US-v3.jpg",
+    imageDesktop:
+      "./src/assets/images/homepage/Homepage-Card-Model-S-Desktop-US-v3.jpg",
+    name: "Model S",
+    description: "The future of electric driving",
+  },
+  {
+    title: "Luxury Sedan",
+    imageMobile:
+      "./src/assets/images/homepage/Homepage-Card-Model-S-Mobile-US-v3.jpg",
+    imageDesktop:
+      "./src/assets/images/homepage/Homepage-Card-Model-S-Desktop-US-v3.jpg",
+    name: "Model S",
+    description: "The future of electric driving",
+  },
+  {
+    title: "Luxury Sedan",
     imageMobile:
       "./src/assets/images/homepage/Homepage-Card-Solar-Roof-Tablet.png",
     imageDesktop:
