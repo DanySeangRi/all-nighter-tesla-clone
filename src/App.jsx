@@ -1,13 +1,12 @@
 import React from "react";
-import ShopNavbar from "./components/layout/ShopNavbar";
-import Navbar from "./components/layout/Navbar";
-
+import Footer from './components/learn-more/Footer';
 
 export default function App() {
+  const containerClass = 'w-full bg-gray-500 p-4'
   return (
-    <>
-    <ShopNavbar/>
-    </>
+    <div>
+      <footer containerClass={containerClass}/>
+    </div>
   );
 }
 
