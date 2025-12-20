@@ -3,11 +3,7 @@ import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 
-import Dropdown from "./dropdown/Dropdowns";
-import Energy from "./dropdown/Energy";
-import Charging from "./dropdown/Charging";
-import Discover from "./dropdown/Discover";
-import Shop from "./dropdown/Shop";
+import MegaMenu from "./MegaMenu";
 
 export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -16,10 +12,11 @@ export default function Navbar() {
   const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
   const icons = [IoHelpCircleOutline, CiGlobe, HiOutlineUserCircle];
   return (
-    <>
-      <nav className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-372 items-center justify-between px-6">
-          {/* Logo */}
+  
+    <div className="relative" onMouseLeave={() => setActiveMenu(null)}>
+      {/* NAVBAR */}
+      <nav className="fixed top-0 z-50 w-full bg-white">
+        <div className="mx-auto flex h-14 max-w-360 items-center justify-between px-4 lg:px-0 ">         
           <div className="font-['Tesla'] text-xl uppercase tracking-[0.5em] text-[#282c35]">
             Tesla
           </div>
@@ -62,7 +59,7 @@ export default function Navbar() {
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden pt-14`}
       >
-        <div className="flex justify-end p-6">
+        <div className="flex justify-end px-2 py-6">
           <button onClick={() => setIsMobileMenuOpen(false)}>
             <IoClose className="text-[26px]" />
           </button>
@@ -82,11 +79,7 @@ export default function Navbar() {
       {/* DROPDOWNS */}
       {!isMobileMenuOpen && (
         <>
-          <Dropdown open={activeMenu === "Vehicles"} />
-          <Energy open={activeMenu === "Energy"} />
-          <Charging open={activeMenu === "Charging"} />
-          <Discover open={activeMenu === "Discover"} />
-          <Shop open={activeMenu === "Shop"} />
+      <MegaMenu activeMenu={activeMenu} open={activeMenu !== null} />
         </>
       )}
       {/* Later:
