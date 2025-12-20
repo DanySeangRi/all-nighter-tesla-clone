@@ -1,10 +1,9 @@
 import React from 'react'
-import Hero from '../src/components/ui/Hero'
-
+import Map from '/src/components/homepage/Map.jsx'
 export default function Home() {
   return (
     <div>
-      <Hero/>
+      <Map />
     </div>
   )
 }
