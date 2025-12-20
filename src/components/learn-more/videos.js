@@ -7,6 +7,7 @@ export const videos = [
       id: 'big-card',
       title: 'Tesla Big Card Video',
       src: video1,
+      
     },
     {
       id: 'small-card',
