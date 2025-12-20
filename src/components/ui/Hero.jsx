@@ -1,37 +1,8 @@
 import React, { useState, useEffect } from "react";
-import HeroBgMobile1 from "../../assets/images/homepage/Homepage-Promo-Meet-Model-Y-Mobile.jpg";
-import HeroBgMobile2 from "../../assets/images/homepage/Homepage-Promo-Meet-Model-3-Mobile.jpg";
-import HeroBgMobile3 from "../../assets/images/homepage/Homepage-Promo-Cybertruck-Mobile-US-v2.jpg";
 import Slideshow from "./Slideshow";
 import SlideIndicator from "./SlideIndicator";
 import NavigationButtons from "./NavigationButtons";
-
-const fallbackSlides = [
-  {
-    title: "Model Y",
-    subtitle: "Order Online for Touchless Delivery",
-    date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
-    image: HeroBgMobile1,
-  },
-  {
-    title: "Model Y",
-    subtitle: "Order Online for Touchless Delivery",
-    date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
-    image: HeroBgMobile2,
-  },
-  {
-    title: "Model Y",
-    subtitle: "Order Online for Touchless Delivery",
-    date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
-    image: HeroBgMobile3,
-  },
-];
+import { fallbackSlides } from "./heroData";
 
 export default function Hero({ data = [], autoPlayTime = 4000 }) {
   const slides = data.length > 0 ? data : fallbackSlides;
