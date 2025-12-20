@@ -1,7 +1,14 @@
 import React from 'react';
 import backgroundImage from '../../assets/images/homepage/Homepage-Card-Model-Y-Desktop-US-v2.jpg';
 
-export default function HeroSection() {
+export default function HeroSection({
+  title,
+  subtitle,
+  video,
+  showButtons = true,
+}) {
+  const isScrolled = useScroll(100);
+
   return (
     <div
       className="h-screen bg-cover bg-center flex flex-col justify-between"

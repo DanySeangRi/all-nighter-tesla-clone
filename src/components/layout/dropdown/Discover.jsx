@@ -4,7 +4,7 @@ export default function Discover({ open }) {
   return (
     <div
       className={`absolute left-0 top-14 w-full h-115.5 bg-white
-        transition-all duration-500 ease-out
+        transition-all duration-500 ease-initial
         ${
           open
             ? "opacity-100 translate-y-0"

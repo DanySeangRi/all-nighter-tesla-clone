@@ -54,7 +54,7 @@ export default function Dropdown({ open }) {
                 style={{ transitionDelay: `${i * 100}ms` }}
                 className={`
                   text-center transform
-                  transition-all duration-500 ease-out
+                  transition-all duration-500 ease-initial
                   ${
                     open
                       ? "opacity-100 translate-y-0"
