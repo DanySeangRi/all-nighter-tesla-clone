@@ -2,9 +2,11 @@ import React from 'react'
 import HomeShowcaseCard from './HomeShowcaseCard'
 import HomeShowcaseData from './data'
 import { Home } from 'lucide-react'
+import NavigationButtons from '../ui/NavigationButtons'
+import SlideIndicator from '../ui/SlideIndicator'
 const PowerSupply = () => {
   return (
-    <div className='flex w-1000 px-12 gap-6'>
+    <div className='flex w-1000 px-12 gap-6 relative'>
       {HomeShowcaseData.map((item,index)=>(
         <HomeShowcaseCard
         key={index}
@@ -13,7 +15,11 @@ const PowerSupply = () => {
         name={item.name}
         description={item.description}
       />  
+
       ))}
+      <SlideIndicator/>
+     <NavigationButtons/>
+
     </div>
   )
 }
