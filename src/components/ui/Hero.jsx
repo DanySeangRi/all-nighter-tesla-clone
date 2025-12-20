@@ -32,7 +32,7 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
       {/* Content */}
       <div className="relative h-full flex flex-col items-center text-white pt-16 px-6 text-center z-10">
         {/* Content Title */}
-        <h1 className="text-[40px] font-medium transition-all duration-700">
+        <h1 className="text-[40px] md:text-[56px] font-medium transition-all duration-700">
           {slides[currentIndex].title}
         </h1>
 
@@ -46,10 +46,10 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
 
         {/* Buttons */}
         <div className="flex flex-row gap-4 justify-center">
-          <button className="bg-blue-600 text-white w-[187px] h-10 rounded shadow-sm hover:bg-blue-700 transition-colors text-sm font-medium cursor-pointer">
+          <button className="bg-blue-600 text-white grow w-[187px] md:w-[164px] lg:w-[200px] h-10 rounded shadow-sm hover:bg-blue-700 transition-colors text-sm font-medium cursor-pointer">
             {slides[currentIndex].button1}
           </button>
-          <button className="bg-white/90 text-gray-800 w-[187px] h-10 rounded shadow-sm hover:bg-white transition-colors text-sm font-medium cursor-pointer">
+          <button className="bg-white/90 text-gray-800 grow w-[187px] md:w-[164px] lg:w-[200px] h-10 rounded shadow-sm hover:bg-white transition-colors text-sm font-medium cursor-pointer">
             {slides[currentIndex].button2}
           </button>
         </div>
