@@ -6,5 +6,7 @@ export default function Home() {
     <div>
       <Map />
     </div>
-  )
+
+
+)
 }
