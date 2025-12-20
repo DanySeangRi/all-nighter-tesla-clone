@@ -1,10 +1,18 @@
-import React from "react";
-import { IoHelpCircleOutline } from "react-icons/io5";
-import { CiGlobe } from "react-icons/ci";
-import { HiOutlineUserCircle } from "react-icons/hi2";
+import React, { useState } from "react";
+import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
+import { HiOutlineUserCircle } from "react-icons/hi2";
+
+import Dropdown from "./dropdown/Dropdowns";
+import Energy from "./dropdown/Energy";
+import Charging from "./dropdown/Charging";
+import Discover from "./dropdown/Discover";
+import Shop from "./dropdown/Shop";
 
 export default function Navbar() {
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
   const icons = [IoHelpCircleOutline, CiGlobe, HiOutlineUserCircle];
   return (
@@ -21,37 +29,70 @@ export default function Navbar() {
             {menuItems.map((item) => (
               <li
                 key={item}
-                className="cursor-pointer rounded-sm px-4 py-2 hover:bg-black/5 transition"
+                onMouseEnter={() => setActiveMenu(item)}
+                className="cursor-pointer rounded-sm px-4 py-2 hover:bg-black/5  transition"
               >
                 {item}
               </li>
             ))}
           </ul>
 
-<div className="hidden lg:flex items-center  space-x-2">
-  <IoHelpCircleOutline className="text-[26px]" />
-  <SlGlobe className="text-[20px]"/>
-  <HiOutlineUserCircle className="text-[25px]"/>
-</div>
+          {/* Icons */}
+          <div className="hidden lg:flex items-center space-x-2">
+            <IoHelpCircleOutline className="text-[26px]" />
+            <SlGlobe className="text-[20px]" />
+            <HiOutlineUserCircle className="text-[26px]" />
+          </div>
 
-          {/* Right Actions */}
-          {/* <div className="hidden lg:flex items-center text-[27px] space-x-2">
-            {icons.map((Icon, i) => (
-              <span
-                key={i}
-                className="cursor-pointer rounded py-2  hover:bg-gray-100 transition"
-              >
-                <Icon />
-              </span>
-            ))}
-          </div> */}
-
-          {/* Mobile Menu */}
-          <button className="lg:hidden rounded-sm hover:bg-gray-200 bg-gray-100 p-1.5 px-4 font-tesla font-['Inter' ] text-[14px]  font-semibold text-black transition-all duration-300">
-            Menu
-          </button>
+          {/* Mobile Menu Toggle Button */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="rounded-sm px-4 py-2 text-[14px] font-medium tracking-[1px] hover:bg-black/5 transition bg-gray-100"
+            >
+              {isMobileMenuOpen ? <IoClose className="text-[26px]" /> : "Menu"}
+            </button>
+          </div>
         </div>
       </nav>
-    </>
+
+      {/* MOBILE MENU */}
+      <div
+        className={`fixed inset-0 z-40 transform bg-white transition-transform duration-300 ease-in-out ${
+          isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+        } lg:hidden pt-14`}
+      >
+        <div className="flex justify-end p-6">
+          <button onClick={() => setIsMobileMenuOpen(false)}>
+            <IoClose className="text-[26px]" />
+          </button>
+        </div>
+        <ul className="flex flex-col items-center space-y-4 text-xl font-medium">
+          {menuItems.map((item) => (
+            <li
+              key={item}
+              className="cursor-pointer rounded-sm px-4 py-2 hover:bg-black/5 bg-gray-100 transition"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* DROPDOWNS */}
+      {!isMobileMenuOpen && (
+        <>
+          <Dropdown open={activeMenu === "Vehicles"} />
+          <Energy open={activeMenu === "Energy"} />
+          <Charging open={activeMenu === "Charging"} />
+          <Discover open={activeMenu === "Discover"} />
+          <Shop open={activeMenu === "Shop"} />
+        </>
+      )}
+      {/* Later:
+     
+      <Discover open={activeMenu === "Discover"} />
+      */}
+    </div>
   );
 }
