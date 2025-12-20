@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
-import heroBackgroundHome1 from "../../assets/images/homepage/Homepage-Promo-Meet-Model-Y-Mobile.jpg";
-import heroBackgroundHome2 from "../../assets/images/homepage/Homepage-Promo-Meet-Model-3-Mobile.jpg";
-import heroBackgroundHome3 from "../../assets/images/homepage/Homepage-Promo-Cybertruck-Mobile-US-v2.jpg";
+import HeroBgMobile1 from "../../assets/images/homepage/Homepage-Promo-Meet-Model-Y-Mobile.jpg";
+import HeroBgMobile2 from "../../assets/images/homepage/Homepage-Promo-Meet-Model-3-Mobile.jpg";
+import HeroBgMobile3 from "../../assets/images/homepage/Homepage-Promo-Cybertruck-Mobile-US-v2.jpg";
+import Slideshow from "./Slideshow";
+import SlideIndicator from "./SlideIndicator";
+import NavigationButtons from "./NavigationButtons";
 
 const fallbackSlides = [
   {
@@ -10,7 +13,7 @@ const fallbackSlides = [
     date: "",
     button1: "Custom Order",
     button2: "Existing Inventory",
-    image: heroBackgroundHome1,
+    image: HeroBgMobile1,
   },
   {
     title: "Model Y",
@@ -18,7 +21,7 @@ const fallbackSlides = [
     date: "",
     button1: "Custom Order",
     button2: "Existing Inventory",
-    image: heroBackgroundHome2,
+    image: HeroBgMobile2,
   },
   {
     title: "Model Y",
@@ -26,7 +29,7 @@ const fallbackSlides = [
     date: "",
     button1: "Custom Order",
     button2: "Existing Inventory",
-    image: heroBackgroundHome3,
+    image: HeroBgMobile3,
   },
 ];
 
@@ -53,22 +56,7 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
   return (
     <section className="h-[80vh] w-full font-sans overflow-hidden bg-black text-white relative">
       {/* Background Image with Transition */}
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentIndex ? "opacity-100" : "opacity-0"
-          }`}
-        >
-          <img
-            src={slide.image}
-            alt={slide.title}
-            className="w-full h-full object-cover object-center"
-          />
-        </div>
-      ))}
-
-      {/* <div className="absolute inset-0 bg-black/40"></div> */}
+      <Slideshow slides={slides} currentIndex={currentIndex} />
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center text-white pt-16 px-6 text-center z-10">
@@ -96,59 +84,14 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
         </div>
 
         {/* Slide indicators */}
-        <div className="absolute bottom-6 flex justify-center space-x-2">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-white"
-                  : "bg-gray-600 cursor-pointer"
-              }`}
-            />
-          ))}
-        </div>
+        <SlideIndicator
+          totalSlides={slides.length}
+          currentIndex={currentIndex}
+          onSlideChange={goToSlide}
+        />
 
         {/* Navigation Btn */}
-        <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between">
-          <button
-            onClick={prevSlide}
-            className="hidden min-[1200px]:block rounded-sm p-2 bg-white/75 transition-colors shadow-lg cursor-pointer"
-          >
-            <svg
-              className="w-6 h-6 text-black/70"  
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <button
-            onClick={nextSlide}
-            className="hidden min-[1200px]:block rounded-sm p-2 bg-white/75 transition-colors shadow-lg cursor-pointer"
-          >
-            <svg
-              className="w-6 h-6 text-black/70"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </div>
+        <NavigationButtons onPrev={prevSlide} onNext={nextSlide} />
       </div>
     </section>
   );
