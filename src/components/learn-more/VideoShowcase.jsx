@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Play, Pause } from "lucide-react";
 
+
 const VideoShowcase = ({ videoSrc, posterSrc, layout = "full" }) => {
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
