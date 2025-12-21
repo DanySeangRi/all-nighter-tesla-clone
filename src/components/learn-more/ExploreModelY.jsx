@@ -87,7 +87,7 @@ function ExploreModelY() {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-center w-full gap-0 xl:gap-40">
+                <div className="flex items-center justify-center w-full gap-0 xl:gap-140">
                     <div className="text-center">
                         <p className='hidden font-light text-[32px] md:text-[40px] text-gray-500 italic xl:block'>
                             <span className="not-italic font-medium text-black ">Model Y</span> {currentCar.trimLevel}
