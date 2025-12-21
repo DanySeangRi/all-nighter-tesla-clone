@@ -27,14 +27,14 @@ const HomeShowcaseCard = ({
            {/* Content */}
           <div className="relative z-10  h-full flex flex-col space-between">
                 {/* title at the top of the page  */}
-                <div className="text-white w-full h-48.25 p-4 md:py-8 md:px-10 ">
-                  <span className=" text-[14px]">{title}</span>
+                <div className="text-white w-full h-48.25 p-4 xl:p-10">
+                  <span className=" text-[14px] xl:text-[17x]">{title}</span>
                 </div>
                 {/* bottom content  */}
-                <div className=" gap-5  flex-col p-4 md:p-10 w-full h-96.5 item-end justify-end flex">
+                <div className=" gap-5  flex-col p-4 xl:p-10 w-full h-96.5 item-end justify-end flex">
                     <div>
-                      <h1 className="relative text-[40px] lg:text-5xl text-white top-2 lg:my-2">{name}</h1>
-                      <p className={`text-white ${underline} underline-offset-4 text-[16px] lg:text-[17px]`}>
+                      <h1 className="relative text-[40px] lg:text-5xl xl:text-5xl text-white top-2 lg:my-2 xl:my-4">{name}</h1>
+                      <p className={`text-white ${underline} underline-offset-4 text-[16px] lg:text-[17px] xl:text-[20px]`}>
                         {description}
                       </p>
                     </div>

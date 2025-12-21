@@ -12,10 +12,10 @@ export default function HeroSection() {
     setCurrentIndex(index);
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const cardWidth = container.children[0]?.offsetWidth || 0;
-      const gap = 16; // gap-4 = 16px
-      const scrollPosition = index * (cardWidth + gap);
-      container.scrollTo({ left: scrollPosition, behavior: 'smooth' });
+      const card = container.children[0]?.children[index];
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
     }
   };
 
@@ -25,19 +25,39 @@ export default function HeroSection() {
     const scrollWidth = container.scrollWidth;
     const clientWidth = container.clientWidth;
     
-    const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 10; // 10px threshold
+    const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 5;
     
     if (isAtEnd) {
-      setCurrentIndex(HomeShowcaseData.length - 1);
+      if (currentIndex !== HomeShowcaseData.length - 1) {
+        setCurrentIndex(HomeShowcaseData.length - 1);
+      }
       return;
     }
     
-    const cardWidth = container.children[0]?.offsetWidth || 0;
-    const gap = 16;
-    const newIndex = Math.round(scrollLeft / (cardWidth + gap));
+    const cards = Array.from(container.children[0]?.children || []);
+    if (cards.length === 0) return;
     
-    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < HomeShowcaseData.length) {
-      setCurrentIndex(newIndex);
+    let maxVisibility = 0;
+    let mostVisibleIndex = 0;
+    
+    cards.forEach((card, index) => {
+      const cardLeft = card.offsetLeft;
+      const cardWidth = card.offsetWidth;
+      const cardRight = cardLeft + cardWidth;
+      
+      const visibleLeft = Math.max(scrollLeft, cardLeft);
+      const visibleRight = Math.min(scrollLeft + clientWidth, cardRight);
+      const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+      const visibilityRatio = visibleWidth / cardWidth;
+      
+      if (visibilityRatio > maxVisibility) {
+        maxVisibility = visibilityRatio;
+        mostVisibleIndex = index;
+      }
+    });
+    
+    if (mostVisibleIndex !== currentIndex) {
+      setCurrentIndex(mostVisibleIndex);
     }
   };
 
@@ -45,15 +65,18 @@ export default function HeroSection() {
     <section>
       <Hero/>
       {/* showcase cards */}
-      <div className="pt-6 px-3 lg:pt-12 lg:px-8 relative">
+      <div className="pt-6 pl-3 lg:pt-12 lg:pl-8 relative"> 
         <div 
           ref={scrollContainerRef}
           onScroll={handleScroll}
           className="overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"
         >
-          <div className="flex gap-4 pr-3">
+          <div className="flex gap-4"> {/* CHANGED: Removed pr-3 */}
             {HomeShowcaseData.map((item, index) => (
-              <div key={index} className="snap-start">
+              <div 
+                key={index} 
+                className={`snap-start${index === HomeShowcaseData.length - 1 ? ' pr-3 lg:pr-8' : ''}`}
+              >
                 <HomeShowcaseCard
                   title={item.title}
                   mobileImage={item.imageMobile}
@@ -61,8 +84,8 @@ export default function HeroSection() {
                   name={item.name}
                   underline="underline"
                   description={item.description}
-                  width='w-82.5 lg:w-[606px]'
-                  height='h-130 lg:w-[520px]'
+                  width='w-82.5 lg:w-[606px] xl:w-[1024px]'
+                  height='h-130 lg:w-[520px] xl:h-[580px]'
                 />
               </div>
             ))}

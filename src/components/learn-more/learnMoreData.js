@@ -1,4 +1,4 @@
-import { LearnMoreData1, LearnMoreData2, LearnMoreData3, Affordability1, Affordability2, Affordability3, Connected1, Connected2, Connected3, Connected4 } from "./Icons.jsx";
+import { LearnMoreData1, LearnMoreData2, LearnMoreData3, Affordability1, Affordability2, Affordability3, Connected1, Connected2, Connected3, Connected4 } from "./icons.jsx";
 
 export const learnMoreData = {
   sectionTitle: "Everything You Want",
