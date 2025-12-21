@@ -343,7 +343,7 @@ function MobileShopContent({ onBack, onClose }) {
 
 
 // Main MobileMenuContent component
-export default function MobileMenuContent({ activeMenu, onBack, onClose }) {
+export default function ShopMobileMenuContent({ activeMenu, onBack, onClose }) {
   if (activeMenu === "Vehicles") {
     return <MobileVehiclesContent onBack={onBack} onClose={onClose} />;
   } else if (activeMenu === "Energy") {

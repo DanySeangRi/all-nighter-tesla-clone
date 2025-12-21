@@ -127,7 +127,7 @@ const DROPDOWN_DATA = {
 };
 
 
-export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave }) {
+export default function ShopMegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave }) {
   const [menuHeight, setMenuHeight] = useState(0);
   const contentRef = useRef(null);
 

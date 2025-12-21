@@ -4,10 +4,10 @@ import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
 
-import MegaMenu from "./MegaMenu";
-import MobileMenuContent from "./MobileMenuContent";
+import ShopMegaMenu from "./ShopMegaMenu";
+import ShopMobileMenuContent from "./ShopMobileMenuContent";
 
-export default function Navbar() {
+export default function ShopNavbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
@@ -172,7 +172,7 @@ export default function Navbar() {
         </div>
       )}
 
-      <MobileMenuContent
+      <ShopMobileMenuContent
         activeMenu={activeMobileMenu}
         onBack={() => setActiveMobileMenu(null)}
         onClose={() => {
@@ -183,7 +183,7 @@ export default function Navbar() {
 
       {/* DESKTOP MEGA MENU */}
       {!isMobileMenuOpen && (
-        <MegaMenu
+        <ShopMegaMenu
           activeMenu={activeMenu}
           open={activeMenu !== null}
           onMouseEnter={handleMegaMenuEnter} // Pass handler to MegaMenu
