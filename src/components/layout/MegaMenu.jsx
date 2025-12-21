@@ -142,7 +142,7 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
   }, [activeMenu, data]); // Re-measure when activeMenu or its data changes
 
   const renderImageGridWithLinks = (items, links, animationDelayFn, isActive) => (
-    <div className="mx-auto max-w-7xl py-14">
+    <div className="mx-auto max-w-7xl py-14 ">
       <div className="grid grid-cols-[3fr_1fr] gap-10">
         {/* LEFT PRODUCTS */}
         <div className="grid grid-cols-4 gap-6">
@@ -287,7 +287,7 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
 
   return (
     <div
-      className={`absolute left-0 top-14 w-full bg-white z-40 overflow-hidden
+      className={`fixed left-0 top-14 w-full bg-white z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open
