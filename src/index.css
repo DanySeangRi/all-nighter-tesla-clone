@@ -1,1 +1,18 @@
+@font-face {
+  font-family: 'Tesla';
+  src: url('/font/Tesla-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --transition-custom-tesla-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-tesla-ease {
+  transition-timing-function: var(--transition-custom-tesla-ease);
+}
+
 @import "tailwindcss";
+    
