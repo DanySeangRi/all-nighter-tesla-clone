@@ -31,7 +31,7 @@ const VideoDisplay = ({
     return <div className={className}>Video not found for ID: {id}</div>;
   }
 
-  const videoContainerClasses = `relative w-full overflow-hidden mx-auto h-screen group ${id === "small-card" ? 'max-w-[1116px] ' : 'max-w-[1344px]'} ${className}`;
+  const videoContainerClasses = `relative w-full overflow-hidden mx-auto h-screen sm:h-auto group ${id === "small-card" ? 'max-w-[1116px] ' : 'max-w-[1344px]'} ${className}`;
 
   return (
     <div className={videoContainerClasses}>
@@ -41,7 +41,7 @@ const VideoDisplay = ({
         loop={loop}
         muted={muted}
         playsInline
-        className={`w-full  mt-40 ${height} object-cover rounded-lg`}
+        className={`w-full mt-40 sm:mt-20 xl:mt-40 ${height} object-cover rounded-lg`}
       />
       <div className={`absolute ${buttonPositionClasses} z-10`}>
         <button
