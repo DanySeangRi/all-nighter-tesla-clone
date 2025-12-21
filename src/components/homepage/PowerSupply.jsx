@@ -1,37 +1,79 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import HomeShowcaseCard from "./HomeShowcaseCard";
 import { powerSupplyData } from "./data";
 import Button from "../ui/Button";
 import { cardBtn } from "../ui/uiStyle";
 import NavigationButtons from "../ui/NavigationButtons";
+import SlideIndicator from "../ui/SlideIndicator";
 
 const PowerSupply = () => {
+  const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const slides = powerSupplyData.length;
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === slides - 1 ? 0 : prev + 1
-    );
+  // Scroll to a specific card and center it
+  const scrollToCard = (index) => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const card = container.children[index];
+    if (!card) return;
+
+    container.scrollTo({
+      left:
+        card.offsetLeft -
+        container.offsetWidth / 2 +
+        card.offsetWidth / 2,
+      behavior: "smooth",
+    });
   };
 
+  // Next slide
+  const nextSlide = () => {
+    const next =
+      currentIndex === powerSupplyData.length - 1
+        ? 0
+        : currentIndex + 1;
+
+    setCurrentIndex(next);
+    scrollToCard(next);
+  };
+
+  // Previous slide
   const prevSlide = () => {
-    setCurrentIndex((prev) =>
-      prev === 0 ? slides - 1 : prev - 1
-    );
+    const prev =
+      currentIndex === 0
+        ? powerSupplyData.length - 1
+        : currentIndex - 1;
+
+    setCurrentIndex(prev);
+    scrollToCard(prev);
+  };
+
+  // Update index on manual scroll
+  const handleScroll = () => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const cardWidth =
+      container.children[0].offsetWidth + 24; // gap-6 = 24px
+    const index = Math.round(container.scrollLeft / cardWidth);
+
+    setCurrentIndex(index);
   };
 
   return (
-    <div className="relative mt-12 overflow-hidden">
-      {/* Slider Track */}
+    <div className="relative mt-12">
+      {/* Scrollable cards */}
       <div
-        className="flex h-165 transition-transform duration-500 px-12 gap-6 ease-in-out"
-        style={{
-          transform: `translateX(-${currentIndex * 100}%)`,
-        }}
+        ref={containerRef}
+        onScroll={handleScroll}
+        className="flex gap-6 px-12 h-[700px] overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
       >
         {powerSupplyData.map((item, index) => (
-          <div key={item.id ?? index} className="">
+          <div
+            key={item.id ?? index}
+            className="shrink-0 snap-center"
+          >
             <HomeShowcaseCard
               mobileImage={item.imageMobile}
               desktopImage={item.imageDesktop}
@@ -63,8 +105,22 @@ const PowerSupply = () => {
         ))}
       </div>
 
-      {/* Navigation */}
+      {/* Arrow navigation */}
       <NavigationButtons onPrev={prevSlide} onNext={nextSlide} />
+
+      {/* Dot indicator */}
+   
+   {/* Dot indicator */}
+<div className="absolute left-1/2 -translate-x-1/2 bottom-15 z-10">
+  <SlideIndicator
+    totalSlides={powerSupplyData.length}
+    currentIndex={currentIndex}
+    onSlideChange={(index) => {
+      setCurrentIndex(index);
+      scrollToCard(index);
+    }}
+  />
+</div>
     </div>
   );
 };

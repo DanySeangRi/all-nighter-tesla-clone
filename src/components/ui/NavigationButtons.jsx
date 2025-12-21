@@ -2,7 +2,7 @@ import React from "react";
 
 export default function NavigationButtons({ onPrev, onNext }) {
   return (
-    <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between">
+    <div className="absolute top-1/2 left-4 right-4 -translate-y-1/2 flex justify-between z-30 pointer-events-auto">
       <button
         onClick={onPrev}
         className="hidden min-[1200px]:block rounded-sm p-2 bg-white/75 transition-colors shadow-lg cursor-pointer"
@@ -22,6 +22,7 @@ export default function NavigationButtons({ onPrev, onNext }) {
           />
         </svg>
       </button>
+
       <button
         onClick={onNext}
         className="hidden min-[1200px]:block rounded-sm p-2 bg-white/75 transition-colors shadow-lg cursor-pointer"
@@ -44,4 +45,3 @@ export default function NavigationButtons({ onPrev, onNext }) {
     </div>
   );
 }
-
