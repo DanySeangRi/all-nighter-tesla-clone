@@ -154,16 +154,12 @@ export default function MegaMenu({ activeMenu, open }) {
                   src={item.img}
                   alt={item.name}
                   className={`h-28 object-contain
-                    transition-all duration-800 custom-tesla-ease
                     ${
                       isActive
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-8"
                     }
                   `}
-                  style={{
-                    transitionDelay: isActive ? animationDelayFn(i) : "0ms",
-                  }}
                 />
               </div>
 
@@ -254,7 +250,7 @@ export default function MegaMenu({ activeMenu, open }) {
           content = renderImageGridWithLinks(
               data.items,
               data.links,
-              (i) => `${i * 120}ms`,
+              (i) => `${i * 100}ms`,
               activeMenu === "Charging"
           );
           break;
@@ -270,7 +266,7 @@ export default function MegaMenu({ activeMenu, open }) {
           content = renderImageGridWithLinks(
               data.items,
               data.links,
-              (i) => `${i * 120}ms`,
+              (i) => `${i * 100}ms`,
               activeMenu === "Energy"
           );
           break;
