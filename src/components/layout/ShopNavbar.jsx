@@ -7,12 +7,17 @@ import { IoIosArrowForward } from "react-icons/io";
 import ShopMegaMenu from "./ShopMegaMenu";
 import ShopMobileMenuContent from "./ShopMobileMenuContent";
 import ChargingAccessoriesDropdown from "./ChargingAccessoriesDropdown";
+import ShopVehicleDropdown from "./ShopVehicleDropdown";
+import ShopApparelDropdown from "./ShopApparelDropdown";
 
 export default function ShopNavbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isChargingDropdownOpen, setIsChargingDropdownOpen] = useState(false);
+  const [isVehicleDropdownOpen, setIsVehicleDropdownOpen] = useState(false);
+  const [isApparelDropdownOpen, setIsApparelDropdownOpen] = useState(false);
   const hoverTimeout = useRef(null); // Add useRef for timeout management // New state for animation
 
   useEffect(() => {
@@ -43,12 +48,33 @@ export default function ShopNavbar() {
 
   const handleMouseEnter = (item) => {
     clearTimeout(hoverTimeout.current);
-    setActiveMenu(item);
+    if (item === "Charging") {
+      setIsChargingDropdownOpen(true);
+      setActiveMenu(null);
+      setIsVehicleDropdownOpen(false);
+    } else if (item === "Vehicle Accessories") {
+      setIsVehicleDropdownOpen(true);
+      setActiveMenu(null);
+      setIsChargingDropdownOpen(false);
+    } else if (item === "Apparel") {
+      setIsApparelDropdownOpen(true);
+      setActiveMenu(null);
+      setIsChargingDropdownOpen(false);
+      setIsVehicleDropdownOpen(false);
+    } else {
+      setActiveMenu(item);
+      setIsChargingDropdownOpen(false);
+      setIsVehicleDropdownOpen(false);
+      setIsApparelDropdownOpen(false);
+    }
   };
 
   const handleMouseLeave = () => {
     hoverTimeout.current = setTimeout(() => {
       setActiveMenu(null);
+      setIsChargingDropdownOpen(false);
+      setIsVehicleDropdownOpen(false);
+      setIsApparelDropdownOpen(false);
     }, 300); // 300ms delay before closing
   };
 
@@ -70,28 +96,54 @@ export default function ShopNavbar() {
 
           {/* DESKTOP MENU */}
           <ul className="hidden lg:flex text-sm font-medium">
-            {menuItems.map((item) => (
-              item === "Charging" ? (
-                <li
-                  key={item}
-                  className="px-4 py-2 rounded-sm cursor-pointer relative group"
-                >
-                  <span className="">{item}</span>
-                  <div className="hidden group-hover:block">
-                    <ChargingAccessoriesDropdown />
-                  </div>
-                </li>
-              ) : (
-                <li
-                  key={item}
-                  onMouseEnter={() => handleMouseEnter(item)}
-                  onMouseLeave={handleMouseLeave}
-                  className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
-                >
-                  {item}
-                </li>
-              )
-            ))}
+            {menuItems.map((item) => {
+              if (item === "Charging") {
+                return (
+                  <li
+                    key={item}
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={() => handleMouseLeave()}
+                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                  >
+                    <span className="">{item}</span>
+                  </li>
+                );
+              } else if (item === "Vehicle Accessories") {
+                return (
+                  <li
+                    key={item}
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={() => handleMouseLeave()}
+                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                  >
+                    <span className="">{item}</span>
+                  </li>
+                );
+              } else if (item === "Apparel") {
+                return (
+                  <li
+                    key={item}
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={() => handleMouseLeave()}
+                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                  >
+                    <span className="">{item}</span>
+                  </li>
+                );
+              } else {
+                // For "Lifestyle" and any other future items handled by ShopMegaMenu
+                return (
+                  <li
+                    key={item}
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={() => handleMouseLeave()}
+                    className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
+                  >
+                    {item}
+                  </li>
+                );
+              }
+            })}
           </ul>
 
           {/* DESKTOP ICONS */}
@@ -117,6 +169,10 @@ export default function ShopNavbar() {
           </button>
         </div>
       </nav>
+
+      <ChargingAccessoriesDropdown open={isChargingDropdownOpen} />
+      <ShopVehicleDropdown open={isVehicleDropdownOpen} />
+      <ShopApparelDropdown open={isApparelDropdownOpen} />
 
       {/* MOBILE MAIN MENU */}
       {showMobileMenu && !activeMobileMenu && (

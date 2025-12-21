@@ -43,12 +43,8 @@ export default function ShopMegaMenu({ activeMenu, open, onMouseEnter, onMouseLe
   if (activeMenu) {
     switch (activeMenu) {
 
-      case "Vehicle Accessories":
-          content = renderSingleCategoryLayout("Vehicle Accessories");
-          break;
-      case "Apparel":
-          content = renderSingleCategoryLayout("Apparel");
-          break;
+
+
       case "Lifestyle":
           content = renderSingleCategoryLayout("Lifestyle");
           break;
