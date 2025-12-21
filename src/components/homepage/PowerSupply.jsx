@@ -111,7 +111,7 @@ const PowerSupply = () => {
       {/* Dot indicator */}
    
    {/* Dot indicator */}
-<div className="absolute left-1/2 -translate-x-1/2 bottom-15 z-10">
+<div className="absolute left-1/2 bottom-30 -translate-x-1/2 lg:bottom-15 z-10">
   <SlideIndicator
     totalSlides={powerSupplyData.length}
     currentIndex={currentIndex}
