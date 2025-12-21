@@ -73,8 +73,7 @@ const DROPDOWN_DATA = {
   Energy: { // Changed key from 'energy' to 'Energy'
     items: [
       { name: "Solar Panels", img: solarPanelImg },
-      { name: "Solar Roof",
-img: solarRoofImg },
+      { name: "Solar Roof", img: solarRoofImg },
       { name: "Powerwall", img: powerWallImg },
       { name: "Megapack", img: megaPackImg, learnOnly: true },
     ],
@@ -121,22 +120,14 @@ img: solarRoofImg },
     items: [
       { name: "Charging", img: shopChargingImg },
       { name: "Vehicle Accessories", img: accessoriesImg },
-    ],
-  },
-  Apparel: {
-    items: [
       { name: "Apparel", img: apparelImg },
-    ],
-  },
-  Lifestyle: {
-    items: [
       { name: "Lifestyle", img: lifestyleImg },
     ],
   },
 };
 
 
-export default function MegaMenu({ activeMenu, open }) {
+export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave }) {
   const [menuHeight, setMenuHeight] = useState(0);
   const contentRef = useRef(null);
 
@@ -230,7 +221,7 @@ export default function MegaMenu({ activeMenu, open }) {
     <div className="flex justify-center py-16">
       <div className="flex gap-10 text-center">
         {items.map((item) => (
-          <div key={item.name} className="group cursor-pointer rounded-lg p-4 group-hover:bg-gray-100">
+          <div key={item.name} className="group cursor-pointer">
             {/* IMAGE */}
             <img
               src={item.img}
@@ -288,14 +279,6 @@ export default function MegaMenu({ activeMenu, open }) {
           content = renderShopLayout(data.items);
           transitionClass = "ease-out";
           break;
-      case "Apparel":
-          content = renderShopLayout(data.items);
-          transitionClass = "ease-out";
-          break;
-      case "Lifestyle":
-          content = renderShopLayout(data.items);
-          transitionClass = "ease-out";
-          break;
       default:
           content = null;
     }
@@ -313,6 +296,8 @@ export default function MegaMenu({ activeMenu, open }) {
         }
       `}
       style={{ height: open ? menuHeight : 0 }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div key={activeMenu} ref={contentRef} className={`transition-opacity duration-200 custom-tesla-ease ${additionalContainerClasses}`}>
         {data ? content : null}
@@ -320,4 +305,3 @@ export default function MegaMenu({ activeMenu, open }) {
     </div>
   );
 }
-

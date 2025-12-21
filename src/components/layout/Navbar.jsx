@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
@@ -11,7 +11,8 @@ export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
-  const [showMobileMenu, setShowMobileMenu] = useState(false); // New state for animation
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const hoverTimeout = useRef(null); // Add useRef for timeout management // New state for animation
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -36,8 +37,23 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
-  const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop", "Apparel", "Lifestyle"];
+  const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
   const mobileMenuItems = [...menuItems, "Support"];
+
+  const handleMouseEnter = (item) => {
+    clearTimeout(hoverTimeout.current);
+    setActiveMenu(item);
+  };
+
+  const handleMouseLeave = () => {
+    hoverTimeout.current = setTimeout(() => {
+      setActiveMenu(null);
+    }, 300); // 300ms delay before closing
+  };
+
+  const handleMegaMenuEnter = () => {
+    clearTimeout(hoverTimeout.current);
+  };
 
   return (
     <div className="relative ">
@@ -56,8 +72,8 @@ export default function Navbar() {
             {menuItems.map((item) => (
               <li
                 key={item}
-                onMouseEnter={() => setActiveMenu(item)}
-                onMouseLeave={() => setActiveMenu(null)}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
                 className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
               >
                 {item}
@@ -167,7 +183,12 @@ export default function Navbar() {
 
       {/* DESKTOP MEGA MENU */}
       {!isMobileMenuOpen && (
-        <MegaMenu activeMenu={activeMenu} open={activeMenu !== null} />
+        <MegaMenu
+          activeMenu={activeMenu}
+          open={activeMenu !== null}
+          onMouseEnter={handleMegaMenuEnter} // Pass handler to MegaMenu
+          onMouseLeave={handleMouseLeave} // Pass handler to MegaMenu
+        />
       )}
     </div>
   );
