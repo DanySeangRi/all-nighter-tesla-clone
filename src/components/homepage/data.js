@@ -24,7 +24,7 @@ const powerSupplyData = [
       "./src/assets/images/homepage/Homepage-Card-Megapack-Mobile-v2.jpg",
     imageDesktop:
       "./src/assets/images/homepage/Homepage-Card-Megapack-Desktop-v2.jpg",
-    name: "Megaapack",
+    name: "Megapack",
     description: "Massive Batteries for Massive Energy Support",
   },
   {
