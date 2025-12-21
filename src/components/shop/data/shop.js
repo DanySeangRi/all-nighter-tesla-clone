@@ -1,11 +1,11 @@
 export  const shop = [
-    {
-      desktopImage : "src/assets/images/shop/tesla-shop-marketing/ModelY.avif",
-      mobileImage: "src/assets/images/shop/tesla-shop-marketing/modelymobile.avif",
-      er: "Model Y Roof Rack",
-      title: "Model Y Roof Rack",
-      textColor: "text-black"
-    },
+    // {
+    //   desktopImage : "src/assets/images/shop/tesla-shop-marketing/ModelY.avif",
+    //   mobileImage: "src/assets/images/shop/tesla-shop-marketing/modelymobile.avif",
+    //   er: "Model Y Roof Rack",
+    //   title: "Model Y Roof Rack",
+    //   textColor: "text-black"
+    // },
     {
       desktopImage : "src/assets/images/shop/tesla-shop-marketing/Model_Y_2800x1300.avif",
       mobileImage:"src/assets/images/shop/tesla-shop-marketing/DSCF8694-1_800x1700.avif",
