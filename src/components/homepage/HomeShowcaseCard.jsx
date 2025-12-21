@@ -31,9 +31,9 @@ const HomeShowcaseCard = ({
                   <span className=" text-[14px]">{title}</span>
                 </div>
                 {/* bottom content  */}
-                <div className=" gap-6  flex-col p-4 md:p-10 w-full h-96.5 item-end justify-end flex">
+                <div className=" gap-5  flex-col p-4 md:p-10 w-full h-96.5 item-end justify-end flex">
                     <div>
-                      <h1 className="text-[48px] text-white relative top-2">{name}</h1>
+                      <h1 className="text-[40px] text-white relative top-2">{name}</h1>
                       <p className={`text-white ${underline} underline-offset-4 text-[16px]`}>
                         {description}
                       </p>

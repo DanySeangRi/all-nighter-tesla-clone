@@ -27,9 +27,9 @@ export default function StickyBottomBar() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-end  ">
+    <div className=" bg-gray-50 flex items-end  ">
       {/* Sticky Bottom Bar */}
-      <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg z-50 py-2.5 px-6">
+      <div className="fixed bottom-0 left-0 w-full bg-white shadow-lg border border-gray-200 z-50 py-2.5 px-6">
         <div className=" flex justify-center items-center  ">
           <div className="flex gap-1 lg:gap-2">
             {/* Ask Question Section */}
