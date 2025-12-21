@@ -36,7 +36,7 @@ export default function Navbar() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
-  const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
+  const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop", "Apparel", "Lifestyle"];
   const mobileMenuItems = [...menuItems, "Support"];
 
   return (
