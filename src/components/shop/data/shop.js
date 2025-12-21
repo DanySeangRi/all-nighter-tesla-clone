@@ -49,7 +49,7 @@ export  const shop = [
       textColor: "text-white"
     },
     {
-      desktopImage: "src/assets/images/shop/tesla-shop-marketing/Lifestyle.avif",
+      desktopImage: "src/assets/images/shop/tesla-shop-marketing/WirelessCharger2800x1300.avif",
       mobileImage:"src/assets/images/shop/tesla-shop-marketing/WirelessCharger1800x1700.avif",
       er: "Lifestyle",
       title: "Lifestyle",
