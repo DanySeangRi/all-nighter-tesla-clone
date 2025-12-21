@@ -5,7 +5,6 @@ import TeslaSpecCard from './components/learn-more/TeslaSpecCard';
 function App() {
   return (
     <div className="min-h-screen">
-      {/* <Footer /> */}
       <TeslaSpecCard/>
     </div>
   );
