@@ -31,7 +31,7 @@ export const learnMoreData = {
 
 
 
-export const AffordabilityData = {
+export const affordabilityData = {
   sectionTitle: "More Affordable Than a Gas Car",
   sectionDescription: "From easy and affordable charging anywhere you go to extremely low maintenance and repairs—owning Model Y Standard typically costs less than owning a comparable gas car.",
   cards: [
@@ -59,7 +59,7 @@ export const AffordabilityData = {
 
 
 
-export const Connected = {
+export const connected = {
   sectionTitle: "Always Connected",
   layout: "small",
   sectionDescription: "From easy and affordable charging anywhere you go to extremely low maintenance and repairs—owning Model Y Standard typically costs less than owning a comparable gas car.",
