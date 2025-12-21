@@ -10,14 +10,6 @@ export default function HeroSection({
 }) {
   const isScrolled = useScroll(100);
 
-export default function HeroSection({
-  title,
-  subtitle,
-  video,
-  showButtons = true,
-}) {
-  const isScrolled = useScroll(100);
-
   return (
     <div className="relative h-screen w-full">
       {/* Video Background */}
@@ -57,6 +49,5 @@ export default function HeroSection({
         )}
       </div>
     </div>
-  );
   );
 }

@@ -6,6 +6,7 @@ import { IoIosArrowForward } from "react-icons/io";
 
 import ShopMegaMenu from "./ShopMegaMenu";
 import ShopMobileMenuContent from "./ShopMobileMenuContent";
+import ChargingAccessoriesDropdown from "./ChargingAccessoriesDropdown";
 
 export default function ShopNavbar() {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -15,13 +16,13 @@ export default function ShopNavbar() {
   const hoverTimeout = useRef(null); // Add useRef for timeout management // New state for animation
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      setShowMobileMenu(true);
-    } else {
+    if (isMobileMenuOpen && !showMobileMenu) {
+      setTimeout(() => setShowMobileMenu(true), 0);
+    } else if (!isMobileMenuOpen && showMobileMenu) {
       const timeoutId = setTimeout(() => setShowMobileMenu(false), 300); // 300ms matches transition duration
       return () => clearTimeout(timeoutId);
     }
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, showMobileMenu]);
 
   // Effect to close mobile menu on desktop resize
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function ShopNavbar() {
     return () => window.removeEventListener('resize', handleResize);
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
-  const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
+  const menuItems = ["Charging", "Vehicle Accessories", "Apparel", "Lifestyle"];
   const mobileMenuItems = [...menuItems, "Support"];
 
   const handleMouseEnter = (item) => {
@@ -70,14 +71,26 @@ export default function ShopNavbar() {
           {/* DESKTOP MENU */}
           <ul className="hidden lg:flex text-sm font-medium">
             {menuItems.map((item) => (
-              <li
-                key={item}
-                onMouseEnter={() => handleMouseEnter(item)}
-                onMouseLeave={handleMouseLeave}
-                className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
-              >
-                {item}
-              </li>
+              item === "Charging" ? (
+                <li
+                  key={item}
+                  className="px-4 py-2 rounded-sm cursor-pointer relative group"
+                >
+                  <span className="">{item}</span>
+                  <div className="hidden group-hover:block">
+                    <ChargingAccessoriesDropdown />
+                  </div>
+                </li>
+              ) : (
+                <li
+                  key={item}
+                  onMouseEnter={() => handleMouseEnter(item)}
+                  onMouseLeave={handleMouseLeave}
+                  className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
+                >
+                  {item}
+                </li>
+              )
             ))}
           </ul>
 
