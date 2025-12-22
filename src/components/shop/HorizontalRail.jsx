@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 
 const HorizontalRail = ({ children }) => {
@@ -41,9 +41,9 @@ const HorizontalRail = ({ children }) => {
     <div className="relative">
       <button
         onClick={scrollLeft}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/30 border-2 text-white border-black/20 backdrop-blur p-1.5 text-xl rounded-full shadow"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/15 border-2 text-white border-black/20 backdrop-blur p-1.5 text-xl rounded-full shadow"
       >
-        <ArrowLeft />
+        <ChevronLeft/>
       </button>
 
       <div
@@ -56,9 +56,9 @@ const HorizontalRail = ({ children }) => {
 
       <button
         onClick={scrollRight}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/30 border-2 text-white border-black/20 backdrop-blur p-1.5 text-xl rounded-full shadow"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/15 border-2 text-white border-black/20 backdrop-blur p-1.5 text-xl rounded-full shadow"
       >
-        <ArrowRight />
+        <ChevronRight />
       </button>
     </div>
   );

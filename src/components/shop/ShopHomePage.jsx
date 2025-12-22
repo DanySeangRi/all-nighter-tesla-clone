@@ -2,6 +2,8 @@ import BestSellers from "./BestSellers.jsx";
 import { shop } from "./data/shop.js";
 import ShopHome from "./ShopHome.jsx";
 import {products} from "./data/products.js";
+import ApparelSection from "./ApparelSection.jsx";
+import ProductGrid from "./ProductGrid.jsx";
 
 
 const ShopHomePage = () => {
@@ -14,7 +16,7 @@ const ShopHomePage = () => {
         title="Model Y Roof Rack"
         textColor="text-black"
       />
-      <BestSellers products={products}/>
+      <BestSellers products={products} />
 
       <ul>
         {shop.map((item) => (
@@ -23,6 +25,17 @@ const ShopHomePage = () => {
           </li>
         ))}
       </ul>
+      <div>
+        <ApparelSection />
+      </div>
+
+      <ShopHome
+        desktopImage="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/tesla-shop-marketing-imagery/image-grid/WirelessCharger2800x1300.png"
+        mobileImage="https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/tesla-shop-marketing-imagery/image-grid/WirelessCharger1800x1700.png"
+        alt="Model Y Roof Rack"
+        title="Model Y Roof Rack"
+        textColor="text-black"
+      />
     </>
   );
 };

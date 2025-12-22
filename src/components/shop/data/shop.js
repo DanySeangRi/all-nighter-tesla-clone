@@ -54,12 +54,12 @@ export const shop = [
       title: "Charging",
       textColor: "text-white"
     },
-  {
-    id: 7,
-      desktopImage: "src/assets/images/shop/tesla-shop-marketing/WirelessCharger2800x1300.avif",
-      mobileImage:"src/assets/images/shop/tesla-shop-marketing/WirelessCharger1800x1700.avif",
-      er: "Lifestyle",
-      title: "Lifestyle",
-      textColor: "text-black"
-    }
+  // {
+  //   id: 7,
+  //     desktopImage: "src/assets/images/shop/tesla-shop-marketing/WirelessCharger2800x1300.avif",
+  //     mobileImage:"src/assets/images/shop/tesla-shop-marketing/WirelessCharger1800x1700.avif",
+  //     er: "Lifestyle",
+  //     title: "Lifestyle",
+  //     textColor: "text-black"
+  //   }
 ]

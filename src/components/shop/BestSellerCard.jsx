@@ -9,7 +9,7 @@ const BestSellerCard = ({ product }) => (
     "
   >
     <BestSellerProductImage src={product.image} alt={product.name} />
-    <h3 className="mt-2 text-sm font-semibold">{product.name}</h3>
+    <h3 className="mt-2 text-lg pt-2">{product.name}</h3>
   </div>
 );
 

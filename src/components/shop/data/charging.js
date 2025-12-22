@@ -92,31 +92,38 @@ export const data = {
       products: [
         {
           id: "wall-connector",
-          name: "Wall Connector",
-          price: 450,
+          name: "Wall Connector Glass Faceplate",
+          price: 75,
           image: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1551813-00-A_0_2000.jpg",
           imageHover: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1551813-00-A_2.jpg"
         },
         {
           id: "universal-wall-connector",
-          name: "Universal Wall Connector",
-          price: 600,
+          name: "Wall Connector Wirebox Kit",
+          price: 65,
           image: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1551805-00-A_0_2000.jpg",
           imageHover: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1551805-00-A_0_2000.jpg"
         },
         {
           id: "mobile-connector",
-          name: "Mobile Connector",
-          price: 300,
+          name: "Pedestal for Wall Connector",
+          price: 425,
           image: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/CHARGING_ADAPTERS/1508484-00-B_3_2000.jpg",
           imageHover: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/CAR_ACCESSORIES/MODEL_3/CHARGING_ADAPTERS/1508484-00-B_0_2000.jpg"
         },
         {
           id: "powershare-bundle",
-          name: "Tesla Powershare Home Backup Bundle",
-          price: 1990,
+          name: "Wall Connector Fastener Kit",
+          price: 20,
           image: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1551814-00-A_0_2000.jpg",
           imageHover: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1551814-00-A_0_2000.jpg"
+        },
+        {
+          id: "powershare-bundle",
+          name: "Cable Organizer",
+          price: 35,
+          image: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1521226-00-A_1_2000.jpg",
+          imageHover: "https://digitalassets-shop.tesla.com/image/upload/f_auto,q_auto/v1/content/dam/tesla/studio/CAR_ACCESSORIES/MODEL_S/CHARGING_ADAPTERS/1521226-00-A_1_2000.jpg"
         },
       ],
     },
