@@ -15,7 +15,7 @@ export default function Shop() {
   
 
       <Routes>
-          <Route path="/" element={<Home />} />
+         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<ShopHomePage />} />
         <Route path="/charging" element={
            <ShopLayout>

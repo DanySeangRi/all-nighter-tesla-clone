@@ -33,8 +33,8 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
   const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
@@ -59,7 +59,7 @@ export default function Navbar() {
     <div className="relative ">
       {/* NAVBAR */}
       <nav className="fixed top-0 z-50 w-full bg-white">
-        <div className="mx-auto flex h-14 items-center justify-between px-10">
+        <div className="mx-auto flex h-14 items-center justify-between px-5 ">
           {/* LOGO */}
           <div
             className={`font-['Tesla'] text-xl uppercase tracking-[0.5em] block`}
@@ -68,29 +68,29 @@ export default function Navbar() {
           </div>
 
           {/* DESKTOP MENU */}
-       <ul className="hidden lg:flex text-sm font-medium">
-  {menuItems.map((item, index) => (
-    <li
-      key={item}
-      onMouseEnter={() => handleMouseEnter(item)}
-      onMouseLeave={handleMouseLeave}
-      className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
-    >
-      {index === 4 ? (
-        <NavLink
-          to="/shop"
-          className={({ isActive }) =>
-            isActive ? "font-bold text-black" : "text-black"
-          }
-        >
-          {item}
-        </NavLink>
-      ) : (
-        item
-      )}
-    </li>
-  ))}
-</ul>
+          <ul className="hidden lg:flex text-sm font-medium">
+            {menuItems.map((item, index) => (
+              <li
+                key={item}
+                onMouseEnter={() => handleMouseEnter(item)}
+                onMouseLeave={handleMouseLeave}
+                className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
+              >
+                {index === 4 ? (
+                  <NavLink
+                    to="/shop"
+                    className={({ isActive }) =>
+                      isActive ? "font-bold text-black" : "text-black"
+                    }
+                  >
+                    {item}
+                  </NavLink>
+                ) : (
+                  item
+                )}
+              </li>
+            ))}
+          </ul>
 
           {/* DESKTOP ICONS */}
           <div className="hidden lg:flex items-center space-x-2">
@@ -173,7 +173,7 @@ export default function Navbar() {
 
               <div className="flex items-center justify-between px-4 py-4 rounded-lg hover:bg-gray-100">
                 <div className="flex items-center space-x-4 ">
-                  <HiOutlineUserCircle className="text-4"/>
+                  <HiOutlineUserCircle className="text-4" />
                   <span className="font-medium">Account</span>
                 </div>
                 <IoIosArrowForward className="text-gray-400" />
