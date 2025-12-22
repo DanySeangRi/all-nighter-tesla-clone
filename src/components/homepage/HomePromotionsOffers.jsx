@@ -12,6 +12,30 @@ export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef(null);
 
+  const offerCards = [
+    {
+      title: 'Current Offers',
+      description: 'Explore limited-time offers on Tesla vehicles.',
+      image: currentOffersImg,
+      alt: 'current offer image',
+      button: americanBtn[0],
+    },
+    {
+      title: 'American Heroes',
+      description: '$500 off for military, first responders, healthcare, teachers and students.',
+      image: americanHeroesImg,
+      alt: 'american heroes image',
+      button: americanBtn[0],
+    },
+  ];
+
+  const offerContainerClasses =
+    "grid grid-rows-[200px_180px] sm:grid-rows-[200px_auto] lg:flex lg:flex-row-reverse lg:place-content-start w-full lg:flex-1 lg:h-[220px]";
+  const offerImageClasses =
+    'rounded-t-lg lg:rounded-none lg:rounded-r-lg overflow-hidden sm:hidden lg:block lg:w-[180px] lg:h-full';
+  const offerContentClasses =
+    'flex flex-col justify-between bg-[#f4f4f4] rounded-b-lg sm:rounded-t-lg lg:rounded-r-none p-6 lg:py-12 lg:pl-12 sm:min-w-[300px] sm:h-[180] lg:flex-1 lg:h-full';
+
   const goToSlide = (index) => {
     setCurrentIndex(index);
     if (scrollContainerRef.current) {
@@ -66,10 +90,10 @@ export default function HeroSection() {
   };
 
   return (
-    <section>
+    <section className=''>
       <Hero/>
       {/* showcase cards */}
-      <section className="pt-6 pl-3 lg:pt-12 lg:pl-8 relative"> 
+      <section className="pt-6 pl-3 lg:pt-12 lg:pl-9 xl:pl-12 relative"> 
         <div 
           ref={scrollContainerRef}
           onScroll={handleScroll}
@@ -109,53 +133,37 @@ export default function HeroSection() {
       </section>
 
       {/* offer section */}
-      <section className='flex flex-col grow mx-3 gap-4'>
-        <div className='grid grid-rows-[200px_180px] w-full rounded-lg'>
+      <section className='flex flex-col sm:flex-row grow mx-3 lg:mx-9 xl:mx-12 gap-4'>
+        {offerCards.map(({ title, description, image, alt, button }) => (
+          <div
+            key={title}
+            className={offerContainerClasses}
+          >
             {/* offer image */}
-            <div className='rounded-t-lg overflow-hidden'>
-              <img src={currentOffersImg} 
-              alt="current offer image" 
-              className="w-full h-full object-cover" />
+            <div className={offerImageClasses}>
+              <img
+                src={image}
+                alt={alt}
+                className="w-full h-full lg:w-[180px] object-cover"
+              />
             </div>
 
             {/* offer content */}
-            <div className='flex flex-col justify-between bg-[#f4f4f4] rounded-b-lg p-6'>
+            <div className={offerContentClasses}>
               <div>
-                <h2 className='text-[28px] text-[#171a20] font-medium leading-[36px]'>
-                  Current Offers
+                <h2 className='text-[28px] lg:text-[34px] text-[#171a20] font-medium leading-[36px]'>
+                  {title}
                 </h2>
-                <p className='text-[17px] text-[#5c5e62]'>
-                  Explore limited-time offers on Tesla vehicles.
+                <p className='text-[17px] lg:text-[20px] text-[#5c5e62]'>
+                  {description}
                 </p>
               </div>
               <div>
-                <Button title={americanBtn[0].title} css={americanBtn[0].css} />
+                <Button title={button.title} css={button.css} />
               </div>
             </div>
-        </div>
-        <div className='grid grid-rows-[200px_180px] w-full rounded-lg'>
-            {/* offer image */}
-            <div className='rounded-t-lg overflow-hidden'>
-              <img src={americanHeroesImg} 
-              alt="american heroes image" 
-              className="w-full h-full object-cover" />
-            </div>
-
-            {/* offer content */}
-            <div className='flex flex-col justify-between bg-[#f4f4f4] rounded-b-lg p-6'>
-              <div>
-                <h2 className='text-[28px] text-[#171a20] font-medium leading-[36px]'>
-                  American Heroes
-                </h2>
-                <p className='text-[17px] text-[#5c5e62]'>
-                  $500 off for military, first responders, healthcare, teachers and students.
-                </p>
-              </div>
-              <div>
-                <Button title={americanBtn[0].title} css={americanBtn[0].css} />
-              </div>
-            </div>
-        </div>
+          </div>
+        ))}
       </section>
     </section> 
   )
