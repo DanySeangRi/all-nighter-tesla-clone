@@ -9,6 +9,8 @@ import models from "../../assets/images/navbar/ms_34_new.avif";
 import model3 from "../../assets/images/navbar/m3_34_new.avif";
 import modelx from "../../assets/images/navbar/MX_34_blue.avif";
 import modely from "../../assets/images/navbar/shop-model-y-mobile.avif";
+import MobileApparelContent from "./MobileApparelContent"; // NEW IMPORT
+
 // MobileChargingContent component
 function MobileChargingContent({ onBack, onClose }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -83,7 +85,13 @@ function MobileShopContent({ onBack, onClose }) {
     };
   }, []);
 
-  const shopItems = ["Cybertruck"];
+  const shopItems = [
+    { name: "Cybertruck", image: cyber },
+    { name: "Model S", image: models },
+    { name: "Model 3", image: model3 },
+    { name: "Model X", image: modelx },
+    { name: "Model Y", image: modely },
+  ];
 
   return (
     <div
@@ -105,30 +113,21 @@ function MobileShopContent({ onBack, onClose }) {
       {/* SHOP GRID */}
       <div className="grid grid-cols-1 gap-3 p-4  mt-6 text-center">
         {shopItems.map((item) => (
-          <div key={item}>
-            <img src={cyber} alt="" className="bg-gray-100 rounded-sm" />{" "}
-            <p className=" font-medium py-4">{item}</p>
-            <img src={models} alt="" className="bg-gray-100 rounded-sm" />
-            <p className="font-medium py-4">Model S</p>
-            <img src={model3} alt="" className="bg-gray-100 rounded-sm" />
-            <p className="font-medium py-4">Model 3</p>
-            <img src={modelx} alt="" className="bg-gray-100 rounded-sm" />
-            <p className="font-medium py-4"> Model X</p>
-            <img src={modely} alt="" className="bg-gray-100 rounded-sm" />
-            <p className="font-medium py-4">Model Y</p>
-            <div className="flex justify-center space-x-4 text-sm text-gray-600 mt-1"></div>
-            <div className="cursor-pointer p-2 border-2 hover:bg-gray-100  rounded-sm">
-              View All
-            </div>
+          <div key={item.name}> {/* Use item.name as key */}
+            <img src={item.image} alt={item.name} className="bg-gray-100 rounded-sm" />{" "}
+            <p className=" font-medium py-4">{item.name}</p>
           </div>
         ))}
+        {/* View All Button outside the map, after all items */}
+        <div className="cursor-pointer p-2 border-2 hover:bg-gray-100  rounded-sm">
+          View All
+        </div>
       </div>
 
       {/* EXTRA LINKS */}
     </div>
   );
 }
-
 // Main MobileMenuContent component
 export default function ShopMobileMenuContent({
   activeMenu,
@@ -144,10 +143,17 @@ export default function ShopMobileMenuContent({
         isParentMenuOpen={isParentMenuOpen}
       />
     );
+  } else if (activeMenu === "Apparel") { // Modified condition
+    return (
+      <MobileApparelContent // Render new component for Apparel
+        onBack={onBack}
+        onClose={onClose}
+        isParentMenuOpen={isParentMenuOpen}
+      />
+    );
   } else if (
     activeMenu === "Vehicle Accessories" ||
-    activeMenu === "Apparel" ||
-    activeMenu === "Lifestyle"
+    activeMenu === "Lifestyle" // Modified condition
   ) {
     return (
       <MobileShopContent
