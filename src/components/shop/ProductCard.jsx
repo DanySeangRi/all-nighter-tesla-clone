@@ -24,8 +24,8 @@ const ProductCard = ({ product }) => {
     <div className="flex flex-col cursor-pointer">
       <div className="relative w-full isolate">
         {product.outOfStock && (
-          <div className="absolute top-2 left-2 bg-gray-500 text-white text-[10px] font-bold px-2 py-1 z-20">
-            OUT OF STOCK
+          <div className="absolute top-0 left-0 bg-[#5C5E62] text-white text-sm font-semibold px-2 py-2 z-20">
+            Out Of Stock
           </div>
         )}
 
