@@ -71,7 +71,7 @@ export default function ShopVehicleDropdown({
 }) {
   return (
     <div
-      className={`absolute left-0 top-10 w-full bg-white border-t z-40 overflow-hidden
+      className={`fixed left-0 top-10 w-full bg-white border-t z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open

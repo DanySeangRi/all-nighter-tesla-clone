@@ -15,7 +15,11 @@ const CHARGING_DATA = [
   },
 ];
 
-export default function ChargingAccessoriesDropdown({ open, onMouseEnter, onMouseLeave }) {
+export default function ChargingAccessoriesDropdown({
+  open,
+  onMouseEnter,
+  onMouseLeave,
+}) {
   const [menuHeight, setMenuHeight] = useState(0);
   const contentRef = useRef(null);
 
@@ -29,7 +33,7 @@ export default function ChargingAccessoriesDropdown({ open, onMouseEnter, onMous
 
   return (
     <div
-      className={`absolute left-0 top-14 w-full  bg-white z-40 overflow-hidden
+      className={`fixed left-0 top-14 w-full  bg-white z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open
@@ -44,7 +48,11 @@ export default function ChargingAccessoriesDropdown({ open, onMouseEnter, onMous
       <div ref={contentRef} className="px-20 py-12">
         <div className="flex gap-24">
           {CHARGING_DATA.map((category) => (
-            <Category key={category.title} title={category.title} items={category.items} />
+            <Category
+              key={category.title}
+              title={category.title}
+              items={category.items}
+            />
           ))}
         </div>
       </div>
@@ -59,10 +67,7 @@ function Category({ title, items }) {
       <div className="mt-3 h-0.75 w-full bg-gray-300"></div>
       <ul className="space-y-2 text-[14px] text-[#393C41]">
         {items.map((item) => (
-          <li
-            key={item}
-            className="cursor-pointer hover:underline"
-          >
+          <li key={item} className="cursor-pointer hover:underline">
             {item}
           </li>
         ))}

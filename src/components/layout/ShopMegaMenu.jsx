@@ -42,7 +42,7 @@ export default function ShopMegaMenu({
 
   return (
     <div
-      className={`absolute left-0 top-14 w-full bg-white z-40 overflow-hidden
+      className={`fiexed absolute left-0 top-14 w-full bg-white z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open
