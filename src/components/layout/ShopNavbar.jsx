@@ -170,30 +170,36 @@ export default function ShopNavbar() {
             })}
           </ul>
 
-          {/* DESKTOP ICONS */}
-            <div className="flex items-center gap-4 text-xl">
-          <IoSearchOutline />
-          <IoCartOutline />
-          <div className="flex items-center gap-1 text-sm">
-         
-            <span>Menu</span>
-          </div>
-        </div>
+          {/* RIGHT-ALIGNED ICONS AND MENU BUTTONS (Desktop and Mobile) */}
+          <div className="flex items-center gap-4 text-xl">
+            {/* Search and Cart Icons (Visible on both Mobile and Desktop) */}
+            <IoSearchOutline className="cursor-pointer" />
+            <IoCartOutline className="cursor-pointer" />
 
-          {/* MOBILE CLOSE / MENU BUTTON */}
-          <button
-            onClick={() => {
-              setIsMobileMenuOpen(!isMobileMenuOpen);
-              setActiveMobileMenu(null);
-            }}
-            className="lg:hidden px-4 py-2 bg-gray-100 transition-transform duration-150 active:scale-95"
-          >
-            {isMobileMenuOpen ? (
-              <IoClose className="text-xl ml-4 bg-gray-100 p-4" />
-            ) : (
-              <span className="text-sm font-medium  ">Menu</span>
-            )}
-          </button>
+            {/* Mobile Menu Toggle Button (Mobile Only) */}
+            <button
+              onClick={() => {
+                setIsMobileMenuOpen(!isMobileMenuOpen);
+                setActiveMobileMenu(null);
+              }}
+              className="lg:hidden px-4 py-2 bg-gray-100 transition-transform duration-150 active:scale-95"
+            >
+              {isMobileMenuOpen ? (
+                <IoClose className="text-xl" />
+              ) : (
+                <IoMenuOutline className="text-xl" />
+              )}
+            </button>
+
+            {/* Desktop Menu Button (Desktop Only) */}
+            <button
+              onMouseEnter={() => handleMouseEnter("Lifestyle")} // Assuming "Lifestyle" or a generic "Menu" leads to ShopMegaMenu
+              onMouseLeave={handleMouseLeave}
+              className="hidden lg:inline-flex px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer text-sm font-medium"
+            >
+              Menu
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -221,8 +227,8 @@ export default function ShopNavbar() {
       {/* MOBILE MAIN MENU */}
       {showMobileMenu && !activeMobileMenu && (
         <div
-          className={`fixed inset-0 z-60 bg-gray-100 pt-14 transition-opacity duration-300 ease-out lg:hidden ${
-            isMobileMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          className={`fixed inset-0 z-60 bg-gray-100 pt-14 transform transition-transform duration-300 ease-out lg:hidden ${
+            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
           onClick={() => {
             setIsMobileMenuOpen(false);
@@ -285,14 +291,18 @@ export default function ShopNavbar() {
         </div>
       )}
 
-      <ShopMobileMenuContent
-        activeMenu={activeMobileMenu}
-        onBack={() => setActiveMobileMenu(null)}
-        onClose={() => {
-          setActiveMobileMenu(null);
-          setIsMobileMenuOpen(false);
-        }}
-      />
+      {/* Conditional rendering for ShopMobileMenuContent */}
+      {isMobileMenuOpen && (
+        <ShopMobileMenuContent
+          activeMenu={activeMobileMenu}
+          onBack={() => setActiveMobileMenu(null)}
+          onClose={() => {
+            setActiveMobileMenu(null);
+            setIsMobileMenuOpen(false);
+          }}
+          isParentMenuOpen={isMobileMenuOpen} // Pass the state down
+        />
+      )}
 
       {/* DESKTOP MEGA MENU */}
       {!isMobileMenuOpen && (

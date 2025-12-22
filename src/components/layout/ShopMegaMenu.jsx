@@ -47,7 +47,7 @@ export default function ShopMegaMenu({ activeMenu, open, onMouseEnter, onMouseLe
 
 
       default:
-          content = null;
+          content = renderSingleCategoryLayout(activeMenu);
     }
   }
 

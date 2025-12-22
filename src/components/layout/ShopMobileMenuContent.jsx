@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoClose } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 
 
-
-
-
-
 // MobileChargingContent component
 function MobileChargingContent({ onBack, onClose }) {
+  const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMenu(true);
+    }, 0);
+    return () => {
+      setShowMenu(false); // Reset state on unmount
+      clearTimeout(timer);
+    };
+  }, []);
+
   const chargingItems = [
     "Home Charging",
     "Charging",
@@ -18,7 +26,7 @@ function MobileChargingContent({ onBack, onClose }) {
   ];
 
   return (
-    <div className="fixed inset-0 z-70 bg-white px-4 pt-4 overflow-y-auto lg:hidden">
+    <div className={`fixed inset-0 z-70 bg-white px-4 pt-4 overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${showMenu ? "translate-x-0" : "translate-x-full"}`}>
       {/* HEADER */}
       <div className="flex items-center justify-between h-14">
         <button onClick={onBack} className="text-xl">
@@ -69,10 +77,22 @@ function MobileChargingContent({ onBack, onClose }) {
 
 // MobileShopContent component
 function MobileShopContent({ onBack, onClose }) {
+  const [showMenu, setShowMenu] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMenu(true);
+    }, 0);
+    return () => {
+      setShowMenu(false); // Reset state on unmount
+      clearTimeout(timer);
+    };
+  }, []);
+
   const shopItems = ["Apparel", "Accessories", "Lifestyle"];
 
   return (
-    <div className="fixed inset-0 z-70 bg-white px-4 pt-4 overflow-y-auto lg:hidden">
+    <div className={`fixed inset-0 z-70 bg-white px-4 pt-4 overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${showMenu ? "translate-x-0" : "translate-x-full"}`}>
       {/* HEADER */}
       <div className="flex items-center justify-between h-14">
         <button onClick={onBack} className="text-xl"><IoIosArrowBack /></button>
@@ -106,11 +126,11 @@ function MobileShopContent({ onBack, onClose }) {
 
 
 // Main MobileMenuContent component
-export default function ShopMobileMenuContent({ activeMenu, onBack, onClose }) {
+export default function ShopMobileMenuContent({ activeMenu, onBack, onClose, isParentMenuOpen }) {
   if (activeMenu === "Charging") {
-    return <MobileChargingContent onBack={onBack} onClose={onClose} />;
+    return <MobileChargingContent onBack={onBack} onClose={onClose} isParentMenuOpen={isParentMenuOpen} />;
   } else if (activeMenu === "Vehicle Accessories" || activeMenu === "Apparel" || activeMenu === "Lifestyle") {
-    return <MobileShopContent onBack={onBack} onClose={onClose} />;
+    return <MobileShopContent onBack={onBack} onClose={onClose} isParentMenuOpen={isParentMenuOpen} />;
   }
   return null;
 }
