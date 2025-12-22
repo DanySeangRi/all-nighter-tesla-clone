@@ -3,6 +3,7 @@ import ChargingPage from "../src/components/shop/ChargingPage";
 import VehicleAccessoriesPage from "../src/components/shop/VehicleAccessoriesPage";
 import ShopLayout from "../src/components/shop/ShopLayout";
 import ShopHomePage from "../src/components/shop/ShopHomePage";
+import LifestylePage from "../src/components/shop/LifestylePage ";
 
 export default function Shop() {
   return (
@@ -12,6 +13,7 @@ export default function Shop() {
         <ChargingPage />
         <VehicleAccessoriesPage />
         <ApparelPage />
+        <LifestylePage/>
       </ShopLayout>
     </>
   );
