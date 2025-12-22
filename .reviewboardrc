@@ -1,5 +1,5 @@
 REVIEWBOARD_URL = "https://review.clp.kr/"
 REPOSITORY = "All-Nighter/Team-Project/Tesla-Clone"
 REPOSITORY_TYPE = "git"
-BRANCH = "feature/hero-section"
-LAND_DEST_BRANCH = "feature/hero-section
+BRANCH = "feature/home-page_power-supply"
+LAND_DEST_BRANCH = "feature/home-page_power-supply"
