@@ -116,7 +116,7 @@ export default function ShopNavbar() {
             <span className="text-xl font-semibold font-['Tesla'] ">TESLA</span>
             </NavLink>
             <span>|</span>
-             <NavLink to="/" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
+             <NavLink to="/shop" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
             <span className=" py-1 rounded  text-sm font-medium">Shop</span>
              </NavLink>
           </div>

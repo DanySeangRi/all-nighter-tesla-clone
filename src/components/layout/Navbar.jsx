@@ -3,7 +3,7 @@ import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
-
+import { NavLink } from "react-router";
 import MegaMenu from "./MegaMenu";
 import MobileMenuContent from "./MobileMenuContent";
 
@@ -68,18 +68,29 @@ export default function Navbar() {
           </div>
 
           {/* DESKTOP MENU */}
-          <ul className="hidden lg:flex text-sm font-medium">
-            {menuItems.map((item) => (
-              <li
-                key={item}
-                onMouseEnter={() => handleMouseEnter(item)}
-                onMouseLeave={handleMouseLeave}
-                className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
+       <ul className="hidden lg:flex text-sm font-medium">
+  {menuItems.map((item, index) => (
+    <li
+      key={item}
+      onMouseEnter={() => handleMouseEnter(item)}
+      onMouseLeave={handleMouseLeave}
+      className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
+    >
+      {index === 4 ? (
+        <NavLink
+          to="/shop"
+          className={({ isActive }) =>
+            isActive ? "font-bold text-black" : "text-black"
+          }
+        >
+          {item}
+        </NavLink>
+      ) : (
+        item
+      )}
+    </li>
+  ))}
+</ul>
 
           {/* DESKTOP ICONS */}
           <div className="hidden lg:flex items-center space-x-2">

@@ -11,7 +11,7 @@ import modelx from "../../assets/images/navbar/MX_34_blue.avif";
 import modely from "../../assets/images/navbar/shop-model-y-mobile.avif";
 import MobileApparelContent from "./MobileApparelContent"; // NEW IMPORT
 import MobileLifestyleContent from "./MobileLifestyleContent"; // NEW IMPORT
-
+import { NavLink } from "react-router";
 // MobileChargingContent component
 function MobileChargingContent({ onBack, onClose }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -69,7 +69,7 @@ function MobileChargingContent({ onBack, onClose }) {
               </span>
             </div>
             <div className="p-2 rounded-sm border-2 mt-3 space-y-3 text-[16px] font-medium text-center   mb-2">
-              <button>View All</button>
+             <NavLink to="/charging" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } ><button>View All</button> </NavLink>
             </div>
           </div>
         ))}
@@ -138,7 +138,7 @@ function MobileShopContent({ onBack, onClose }) {
         ))}
         {/* View All Button outside the map, after all items */}
         <div className="cursor-pointer p-2 border-2 hover:bg-gray-100  rounded-sm">
-          View All
+          <NavLink to="/vichleaccessories" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } ><button>View All</button> </NavLink>
         </div>
       </div>
 

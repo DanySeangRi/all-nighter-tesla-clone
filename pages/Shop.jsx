@@ -6,6 +6,7 @@ import ShopHomePage from "../src/components/shop/ShopHomePage";
 import LifestylePage from "../src/components/shop/LifestylePage ";
 import { Routes, Route } from 'react-router-dom'
 import ShopNavbar from "../src/components/layout/ShopNavbar";
+import Home from './Home'
 export default function Shop() {
   return (
     <>
@@ -14,7 +15,8 @@ export default function Shop() {
   
 
       <Routes>
-        <Route path="/" element={<ShopHomePage />} />
+          <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<ShopHomePage />} />
         <Route path="/charging" element={
            <ShopLayout>
              <ChargingPage />
