@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @font-face {
   font-family: 'Tesla';
   src: url('/font/Tesla-Regular.ttf') format('truetype');
@@ -15,16 +16,25 @@
 }
 
 @import "tailwindcss";
-
-
-
-
-
+    
 .no-scrollbar {
-  -ms-overflow-style: none;    
-  scrollbar-width: none;       
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;               
+  display: none; /* Chrome, Safari */
+}
+
+@layer utilities {
+    /* hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* firefox */
+    }
 }

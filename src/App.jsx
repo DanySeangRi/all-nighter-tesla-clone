@@ -4,12 +4,14 @@ import Navbar from "./components/layout/Navbar";
 
 import Shop from "../pages/Shop";
 
+import Home from "/pages/Home";
 export default function App() {
   return (
     <>
+      <Home />
+       <Shop/>
+  </>
     
-    <Shop/>
-    </>
   );
 }
 
