@@ -17,7 +17,7 @@ export default function LifestyleDropdown({
 }) {
   return (
     <div
-      className={`absolute top-10 left-0 w-full bg-white z-40 overflow-hidden
+      className={`fixed top-10 left-0 w-full bg-white z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open

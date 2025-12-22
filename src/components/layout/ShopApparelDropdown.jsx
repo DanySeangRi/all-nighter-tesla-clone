@@ -4,7 +4,7 @@ import tee from "../../assets/images/navbar/ElectricSlideFeatured.avif";
 export default function ShopApparelDropdown({ open, onMouseEnter, onMouseLeave }) {
   return (
     <div
-      className={`absolute top-10 left-0 w-full bg-white z-40 overflow-hidden
+      className={`fixed top-10 left-0 w-full bg-white z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open
