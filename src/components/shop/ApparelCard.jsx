@@ -16,6 +16,7 @@ const ApparelCard = ({ name, image }) => {
           md:px-6 py-2
           border-3 border-black
           rounded-sm
+          font-semibold
           text-sm
           hover:text-white
           hover:bg-black
