@@ -1,14 +1,11 @@
 import React from "react";
-import ShopNavbar from "./components/layout/ShopNavbar";
-import Navbar from "./components/layout/Navbar";
+import SlideCardModelY from "./components/learn-more/SlideCardModelY";
 
 
 export default function App() {
-  return (
-    <>
-    <ShopNavbar/>
-    </>
-  );
+  return <>
+  <SlideCardModelY />
+  </>;
 }
 
 
