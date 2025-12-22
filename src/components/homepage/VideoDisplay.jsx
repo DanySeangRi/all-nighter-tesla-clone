@@ -31,7 +31,7 @@ const VideoDisplay = ({
     return <div className={className}>Video not found for ID: {id}</div>;
   }
 
-  const videoContainerClasses = ` ${id === "small-card" ? 'lg:w-[904px]   ' : 'max-w-[1344px]'} ${className}`;
+  const videoContainerClasses = ` ${id === "small-card" ? 'lg:w-[904px] md:flex-1  ' : 'max-w-[1344px]'} ${className}`;
 
   // Responsive button positioning: top-right for mobile (430px), bottom-left for desktop (1440px)
   const responsiveButtonClasses = "top-7 right-7 ";
@@ -45,7 +45,7 @@ const VideoDisplay = ({
         loop={loop}
         muted={muted}
         playsInline
-        className={`w-full ${height} object-cover rounded-lg `}
+        className={`w-full  ${height} object-cover rounded-lg `}
       />
       <div className={` absolute  ${responsiveButtonClasses} z-10`}>
         <button
