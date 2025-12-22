@@ -30,13 +30,13 @@ function MobileChargingContent({ onBack, onClose }) {
 
   return (
     <div
-      className={`fixed inset-0 z-70 bg-white  overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
+      className={`fixed inset-0 z-70 w-[70%] bg-white  overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
         // Removed px-4
-        showMenu ? "translate-x-0" : "translate-x-full"
+        showMenu ? "translate-x-37" : "translate-x-full"
       }`}
     >
       {/* HEADER */}
-     <div className="sticky top-0 z-10 flex items-center justify-between  h-14 bg-white px-4">
+     <div className="sticky top-0 z-10 flex items-center justify-between  h-12 bg-white px-4">
         {" "}
         {/* Added sticky, top-0, z-10, bg-white, px-4 */}
         <button onClick={onBack} className="text-xl">
@@ -51,7 +51,7 @@ function MobileChargingContent({ onBack, onClose }) {
     
 
       {/* CHARGING GRID */}
-      <div className="grid grid-cols-1 gap-3 p-4 mt-6 text-center">   <span className="text-start">
+      <div className="grid grid-cols-1 gap-3 p-5  text-center">   <span className="text-start">
           <h1 className="text-[20px] font-semibold p-2">Charging</h1>
         </span>
         {chargingItems.map((item) => (
@@ -103,9 +103,9 @@ function MobileShopContent({ onBack, onClose }) {
 
   return (
     <div
-      className={`fixed inset-0 z-70 bg-white overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
+      className={`fixed inset-0 z-70 w-[70%] bg-white overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
         // Removed px-4
-        showMenu ? "translate-x-0" : "translate-x-full"
+        showMenu ? "translate-x-37" : "translate-x-full"
       }`}
     >
       {/* HEADER */}

@@ -42,7 +42,7 @@ export default function ShopNavbar() {
   const mobileMenuItems = [
     ...menuItems,
     "Shop FAQ",
-    "view or Mange Order",
+    "View or Mange Order",
     "Conttact Us",
     "Sign In",
     "Support",
@@ -302,12 +302,13 @@ export default function ShopNavbar() {
       {isMobileMenuOpen &&
         !activeMobileMenu && ( // Changed from showMobileMenu to isMobileMenuOpen
           <div
-                                className={`fixed top-0 bottom-0 right-0 w-[65%] z-60 bg-white pt-14 transform transition-transform duration-700 ease-in-out overflow-x-hidden lg:hidden ${
-                                  // Changed inset-0 to top-0 bottom-0 right-0 w-1/3; duration and easing; added overflow-x-hidden
-                                  isMobileMenuOpen
-                                    ? "translate-x-0 visible"
-                                    : "translate-x-full invisible" // Added visible/invisible
-                                }`}            onClick={() => {
+            className={`fixed top-0 bottom-0 right-0 w-[70%] z-60 bg-white pt-14 transform transition-transform duration-700 ease-in-out overflow-x-hidden lg:hidden ${
+              // Changed inset-0 to top-0 bottom-0 right-0 w-1/3; duration and easing; added overflow-x-hidden
+              isMobileMenuOpen
+                ? "translate-x-0 visible"
+                : "translate-x-full invisible" // Added visible/invisible
+            }`}
+            onClick={() => {
               setIsMobileMenuOpen(false);
               setActiveMobileMenu(null);
             }}
