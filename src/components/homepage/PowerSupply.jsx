@@ -115,7 +115,9 @@ const PowerSupply = () => {
   <SlideIndicator
     totalSlides={powerSupplyData.length}
     currentIndex={currentIndex}
-    onSlideChange={(index) => {
+     activeColor="bg-gray-800 cursor-pointer"
+     inactiveColor="bg-gray-300"
+     onSlideChange={(index) => {
       setCurrentIndex(index);
       scrollToCard(index);
     }}

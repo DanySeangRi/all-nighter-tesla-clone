@@ -12,8 +12,6 @@ import CybertruckTablet from "../../assets/images/homepage/Homepage-Promo-Cybert
 import CybertruckDesktop from "../../assets/images/homepage/Homepage-Promo-Cybertruck-Desktop-US-v2.jpg";
 
 
-
-
 export const fallbackSlides = [
     {
     title: "Model Y",
@@ -25,19 +23,7 @@ export const fallbackSlides = [
         mobile: ModelYMobile,
         tablet: ModelYTablet,
         desktop: ModelYDesktop,
-    },
-    },
-    {
-    title: "Model 3",
-    subtitle: "Order Online for Touchless Delivery",
-    date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
-    images: {
-        mobile: Model3Mobile,
-        tablet: Model3Tablet,
-        desktop: Model3Desktop,
-    },
+        },
     },
     {
     title: "Cybertruck",
@@ -49,7 +35,7 @@ export const fallbackSlides = [
         mobile: CybertruckMobile,
         tablet: CybertruckTablet,
         desktop: CybertruckDesktop,
-    },
+        },
     },
 ];
 
