@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard.jsx";
 
 const ApparelPage = () => {
   return (
-    <div>
+    <div className=" ">
       <h1 className="text-2xl font-bold mb-10 pt-10">{data.category.title}</h1>
 
       {data.sections.map((section) => (
