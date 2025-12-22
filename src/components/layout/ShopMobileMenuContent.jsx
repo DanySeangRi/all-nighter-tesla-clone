@@ -10,6 +10,7 @@ import model3 from "../../assets/images/navbar/m3_34_new.avif";
 import modelx from "../../assets/images/navbar/MX_34_blue.avif";
 import modely from "../../assets/images/navbar/shop-model-y-mobile.avif";
 import MobileApparelContent from "./MobileApparelContent"; // NEW IMPORT
+import MobileLifestyleContent from "./MobileLifestyleContent"; // NEW IMPORT
 
 // MobileChargingContent component
 function MobileChargingContent({ onBack, onClose }) {
@@ -29,24 +30,30 @@ function MobileChargingContent({ onBack, onClose }) {
 
   return (
     <div
-      className={`fixed inset-0 z-70 bg-white px-4 pt-4  overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
+      className={`fixed inset-0 z-70 bg-white  overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
+        // Removed px-4
         showMenu ? "translate-x-0" : "translate-x-full"
       }`}
     >
       {/* HEADER */}
-      <div className="flex items-center justify-between h-14">
+     <div className="sticky top-0 z-10 flex items-center justify-between  h-14 bg-white px-4">
+        {" "}
+        {/* Added sticky, top-0, z-10, bg-white, px-4 */}
         <button onClick={onBack} className="text-xl">
           <IoIosArrowBack />
         </button>
-
+       
+        {/* Changed title to Apparel */}
         <button onClick={onClose}>
           <IoClose className="text-xl" />
         </button>
       </div>
-      <h1 className="text-[20px] font-semibold">Charging</h1>
+    
 
       {/* CHARGING GRID */}
-      <div className="grid grid-cols-1 gap-3 p-4 mt-6 text-center">
+      <div className="grid grid-cols-1 gap-3 p-4 mt-6 text-center">   <span className="text-start">
+          <h1 className="text-[20px] font-semibold p-2">Charging</h1>
+        </span>
         {chargingItems.map((item) => (
           <div key={item}>
             <img src={charging} alt="" />
@@ -86,25 +93,30 @@ function MobileShopContent({ onBack, onClose }) {
   }, []);
 
   const shopItems = [
-    { name: "Cybertruck", image: cyber },
+    { name: "Cybertruck", image: cyber }, // Keeping car models for Vehicle Accessories
     { name: "Model S", image: models },
     { name: "Model 3", image: model3 },
     { name: "Model X", image: modelx },
     { name: "Model Y", image: modely },
+    // Removed Lifestyle items from here
   ];
 
   return (
     <div
-      className={`fixed inset-0 z-70 bg-white px-4 pt-4 overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
+      className={`fixed inset-0 z-70 bg-white overflow-y-auto lg:hidden transform transition-transform ease-in-out duration-300 ${
+        // Removed px-4
         showMenu ? "translate-x-0" : "translate-x-full"
       }`}
     >
       {/* HEADER */}
-      <div className="flex items-center justify-between h-14">
+      <div className="sticky top-0 z-10 flex items-center justify-between  h-14 bg-white px-4">
+        {" "}
+        {/* Added sticky, top-0, z-10, bg-white, px-4 */}
         <button onClick={onBack} className="text-xl">
           <IoIosArrowBack />
         </button>
-        <h1 className="text-[16px] font-medium">Shop</h1>
+        <h1 className="text-[16px] font-medium">Apparel</h1>{" "}
+        {/* Changed title to Apparel */}
         <button onClick={onClose}>
           <IoClose className="text-xl" />
         </button>
@@ -113,8 +125,14 @@ function MobileShopContent({ onBack, onClose }) {
       {/* SHOP GRID */}
       <div className="grid grid-cols-1 gap-3 p-4  mt-6 text-center">
         {shopItems.map((item) => (
-          <div key={item.name}> {/* Use item.name as key */}
-            <img src={item.image} alt={item.name} className="bg-gray-100 rounded-sm" />{" "}
+          <div key={item.name}>
+            {" "}
+            {/* Use item.name as key */}
+            <img
+              src={item.image}
+              alt={item.name}
+              className="bg-gray-100 rounded-sm"
+            />{" "}
             <p className=" font-medium py-4">{item.name}</p>
           </div>
         ))}
@@ -143,7 +161,8 @@ export default function ShopMobileMenuContent({
         isParentMenuOpen={isParentMenuOpen}
       />
     );
-  } else if (activeMenu === "Apparel") { // Modified condition
+  } else if (activeMenu === "Apparel") {
+    // Modified condition
     return (
       <MobileApparelContent // Render new component for Apparel
         onBack={onBack}
@@ -151,9 +170,17 @@ export default function ShopMobileMenuContent({
         isParentMenuOpen={isParentMenuOpen}
       />
     );
+  } else if (activeMenu === "Lifestyle") {
+    // NEW condition for Lifestyle
+    return (
+      <MobileLifestyleContent // Render new component for Lifestyle
+        onBack={onBack}
+        onClose={onClose}
+        isParentMenuOpen={isParentMenuOpen}
+      />
+    );
   } else if (
-    activeMenu === "Vehicle Accessories" ||
-    activeMenu === "Lifestyle" // Modified condition
+    activeMenu === "Vehicle Accessories" // Modified condition
   ) {
     return (
       <MobileShopContent
