@@ -130,7 +130,7 @@ export default function ShopNavbar() {
                     key={item}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={() => handleMouseLeave()}
-                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                    className="px-4 py-2 rounded-sm cursor-pointer hover:bg-black/5 relative"
                   >
                       <NavLink to="/charging" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>
@@ -141,7 +141,7 @@ export default function ShopNavbar() {
                     key={item}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={() => handleMouseLeave()}
-                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                    className="px-4 py-2 rounded-sm cursor-pointer hover:bg-black/5 relative"
                   >
                      <NavLink to="/vichleaccessories" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>
@@ -152,7 +152,7 @@ export default function ShopNavbar() {
                     key={item}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={() => handleMouseLeave()}
-                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                    className="px-4 py-2 rounded-sm cursor-pointer hover:bg-black/5 relative"
                   >
                      <NavLink to="/apparel" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>

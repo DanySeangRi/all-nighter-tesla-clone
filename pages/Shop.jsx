@@ -12,15 +12,32 @@ export default function Shop() {
     <ShopNavbar/>
    
   
-    <ShopLayout>
+
       <Routes>
         <Route path="/" element={<ShopHomePage />} />
-        <Route path="/charging" element={<ChargingPage />} />
-        <Route path="/vichleaccessories" element={<VehicleAccessoriesPage />} />
-        <Route path="/apparel" element={<ApparelPage />} />
-        <Route path="/lifestyle" element={<LifestylePage />} />
+        <Route path="/charging" element={
+           <ShopLayout>
+             <ChargingPage />
+           </ShopLayout>
+         
+          } />
+        <Route path="/vichleaccessories" element={
+          <ShopLayout>
+            <VehicleAccessoriesPage />
+          </ShopLayout>
+        } />
+        <Route path="/apparel" element={
+          <ShopLayout>
+            <ApparelPage />
+          </ShopLayout>
+        } />
+        <Route path="/lifestyle" element={
+          <ShopLayout>
+            <LifestylePage />
+          </ShopLayout>
+        } />
       </Routes>
-    </ShopLayout>
+ 
     
    
     </>
