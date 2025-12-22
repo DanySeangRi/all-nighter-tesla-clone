@@ -9,7 +9,7 @@ const VideoDisplay = ({
   muted = true,
   className = "",
   height,
-  buttonPositionClasses = "bottom-7 left-7", // Default for desktop
+
 }) => {
   const [isPlaying, setIsPlaying] = useState(autoPlay);
   const videoRef = useRef(null);
