@@ -37,5 +37,14 @@ const powerSupplyData = [
   },
 
 ];
-
-export { powerSupplyData };
+const selfDriving = [
+  {
+    imageMobile:
+      "./src/assets/images/homepage/Homepage-Features-Mobile.png",
+    imageDesktop:
+      "./src/assets/images/homepage/Homepage-Features-Desktop.png",
+    name: "Features That Come Standard",
+    description: "Generate Clean Energy With Your Roof",
+  }
+]
+export { powerSupplyData,selfDriving };
