@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { MapPin } from "lucide-react";
 import Superchargers from "../../assets/images/homepage/map-icon/superchargers-tesla.svg";
 import DestinationChargers from "../../assets/images/homepage/map-icon/charger-tesla.svg";
-
+import Button from "../ui/Button";
+import { mapBtn } from "../ui/uiStyle";
 const Map = () => {
   const [userLocation, setUserLocation] = useState(null);
 
@@ -99,12 +100,8 @@ const Map = () => {
 
             {/* Buttons */}
             <div className="flex flex-row gap-4 mt-10">
-              <button className="bg-black text-white px-10 py-3 rounded hover:bg-gray-800">
-                View Network
-              </button>
-              <button className="bg-gray-100 px-10 py-3 rounded hover:bg-gray-200">
-                Learn More
-              </button>
+             <Button title={mapBtn[0].title} css={mapBtn[0].css}/>
+            <Button title ={mapBtn[1].title} css={mapBtn[1].css}/>
             </div>
           </div>
         </div>

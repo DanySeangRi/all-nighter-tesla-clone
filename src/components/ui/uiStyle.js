@@ -15,7 +15,7 @@ const cardBtn = [
 ];
 const mapBtn =[
     {title: "View Networks ",css: ` bg-black h-10 text-white  w-[183px] lg:w-[146px] hover:opacity-100 `,},
-    {title: "Learn More ",css: ` bg-white h-10 text-black  w-[183px] lg:w-[128px] hover:opacity-100 `,},
+    {title: "Learn More ",css: ` bg-[#f4f4f4] h-10 text-black  w-[183px] lg:w-[128px] hover:opacity-100 `,},
 ];
 const americanBtn =[
   {title: "Learn More ",css: ` bg-white h-10   w-[252px] hover:opacity-100 `,},];

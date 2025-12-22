@@ -67,7 +67,7 @@ const PowerSupply = () => {
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="flex gap-6 px-12 h-175 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
+        className="flex gap-4 md:gap-6 px-3 md:px-12 h-175 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
       >
         {powerSupplyData.map((item, index) => (
           <div
