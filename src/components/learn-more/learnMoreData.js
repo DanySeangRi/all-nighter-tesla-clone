@@ -1,4 +1,17 @@
 import { LearnMoreData1, LearnMoreData2, LearnMoreData3, Affordability1, Affordability2, Affordability3, Connected1, Connected2, Connected3, Connected4 } from "./Icons.jsx";
+import slide1Desktop from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-1-Desktop.png";
+import slide1Mobile from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-1-Mobile.png";
+import slide2Desktop from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-2-Desktop.png";
+import slide2Mobile from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-2-Mobile.png";
+import slide3Desktop from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-Warranty-Desktop.avif";
+import slide3Mobile from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-Warranty-Mobile.avif";
+import slide4Desktop from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-4-Desktop.png";
+import slide4Mobile from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-4-Mobile.avif";
+import slide5Desktop from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-3-Desktop.avif";
+import slide5Mobile from "../../assets/images/learn-more/Model-Y-Meet-Carousel-Slide-3-Mobile.avif";
+import { Subtitles } from "lucide-react";
+
+
 
 export const learnMoreData = {
   sectionTitle: "Everything You Want",
@@ -90,3 +103,28 @@ export const connected = {
     }
   ]
 };
+
+
+
+export const cards = [
+
+  { title: "Safety", img: { desktop: slide1Desktop, mobile: slide1Mobile } },
+  { title: "Convenience", img: { desktop: slide2Desktop, mobile: slide2Mobile } },
+  {
+    title: "Full Self-Driving (Supervised)",
+    img: {
+      desktop: 'https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-Y-Meet-Landing-Carousel-FSD-All.jpg',
+      mobile: 'https://digitalassets.tesla.com/tesla-contents/image/upload/f_auto,q_auto/Model-Y-Meet-Landing-Carousel-FSD-All.jpg'
+    }
+  },
+  { title: "Warranties", img: { desktop: slide4Desktop, mobile: slide4Mobile } },
+  { title: "Utility", img: { desktop: slide3Desktop, mobile: slide3Mobile } },
+  { title: "Entertainment", img: { desktop: slide5Desktop, mobile: slide5Mobile } },
+];
+
+
+export const headerTitleCards = {
+  maintitle: "Meet Model Y",
+  subtitle1: "Electric Midsize SUV",
+  subtitle2: "Explore the features that are available with every Model Y."
+}
