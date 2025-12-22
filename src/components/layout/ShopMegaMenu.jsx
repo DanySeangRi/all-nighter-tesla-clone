@@ -45,9 +45,7 @@ export default function ShopMegaMenu({ activeMenu, open, onMouseEnter, onMouseLe
 
 
 
-      case "Lifestyle":
-          content = renderSingleCategoryLayout("Lifestyle");
-          break;
+
       default:
           content = null;
     }

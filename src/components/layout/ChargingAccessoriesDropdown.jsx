@@ -1,6 +1,21 @@
 import React, { useState, useRef, useEffect } from "react";
 
-export default function ChargingAccessoriesDropdown({ open }) {
+const CHARGING_DATA = [
+  {
+    title: "At Home Charging",
+    items: ["Wall Connector", "Mobile Connector", "Charging Adapter"],
+  },
+  {
+    title: "On the Road Charging",
+    items: ["Supercharger Access", "Destination Charging"],
+  },
+  {
+    title: "Other",
+    items: ["Charging Cables", "Adapters", "Power Banks"],
+  },
+];
+
+export default function ChargingAccessoriesDropdown({ open, onMouseEnter, onMouseLeave }) {
   const [menuHeight, setMenuHeight] = useState(0);
   const contentRef = useRef(null);
 
@@ -14,7 +29,7 @@ export default function ChargingAccessoriesDropdown({ open }) {
 
   return (
     <div
-      className={`absolute left-0 top-14 w-full  bg-white z-50 overflow-hidden
+      className={`absolute left-0 top-14 w-full  bg-white z-40 overflow-hidden
         transition-all duration-500 ease-out
         ${
           open
@@ -23,25 +38,35 @@ export default function ChargingAccessoriesDropdown({ open }) {
         }
       `}
       style={{ height: open ? menuHeight : 0 }}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
     >
       <div ref={contentRef} className="px-20 py-12">
         <div className="flex gap-24">
-          
-          <Category title="Chargers" />
-          <Category title="Adapters" />
-          <Category title="Parts" />
-
+          {CHARGING_DATA.map((category) => (
+            <Category key={category.title} title={category.title} items={category.items} />
+          ))}
         </div>
       </div>
     </div>
   );
 }
 
-function Category({ title }) {
+function Category({ title, items }) {
   return (
     <div className="w-64">
       <p className="text-sm font-medium">{title}</p>
       <div className="mt-3 h-0.75 w-full bg-gray-300"></div>
+      <ul className="space-y-2 text-[14px] text-[#393C41]">
+        {items.map((item) => (
+          <li
+            key={item}
+            className="cursor-pointer hover:underline"
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

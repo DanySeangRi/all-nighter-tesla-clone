@@ -64,11 +64,20 @@ const DATA = [
   },
 ];
 
-export default function ShopVehicleDropdown({ open }) {
-  if (!open) return null;
-
+export default function ShopVehicleDropdown({ open, onMouseEnter, onMouseLeave }) {
   return (
-    <div className="absolute left-0 top-full w-full bg-white border-t z-40">
+    <div
+      className={`absolute left-0 top-10 w-full bg-white border-t z-40 overflow-hidden
+        transition-all duration-500 ease-out
+        ${
+          open
+            ? "opacity-100 translate-y-0"
+            : "pointer-events-none opacity-0 -translate-y-2 invisible"
+        }
+      `}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <div className="max-w-7xl mx-auto px-12 py-12">
         <div className="grid grid-cols-5 gap-12">
           {DATA.map((col) => (

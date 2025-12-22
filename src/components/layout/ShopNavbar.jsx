@@ -3,12 +3,14 @@ import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
+import { IoSearchOutline, IoCartOutline, IoMenuOutline } from "react-icons/io5";
 
 import ShopMegaMenu from "./ShopMegaMenu";
 import ShopMobileMenuContent from "./ShopMobileMenuContent";
 import ChargingAccessoriesDropdown from "./ChargingAccessoriesDropdown";
 import ShopVehicleDropdown from "./ShopVehicleDropdown";
 import ShopApparelDropdown from "./ShopApparelDropdown";
+import LifestyleDropdown from "./LifestyleDropdown";
 
 export default function ShopNavbar() {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -18,7 +20,9 @@ export default function ShopNavbar() {
   const [isChargingDropdownOpen, setIsChargingDropdownOpen] = useState(false);
   const [isVehicleDropdownOpen, setIsVehicleDropdownOpen] = useState(false);
   const [isApparelDropdownOpen, setIsApparelDropdownOpen] = useState(false);
-  const hoverTimeout = useRef(null); // Add useRef for timeout management // New state for animation
+  const [isLifestyleDropdownOpen, setIsLifestyleDropdownOpen] = useState(false); // New state
+  const hoverTimeout = useRef(null); // Add useRef for timeout management
+  const closeOthersTimeout = useRef(null); // New ref for close others timeout
 
   useEffect(() => {
     if (isMobileMenuOpen && !showMobileMenu) {
@@ -39,47 +43,67 @@ export default function ShopNavbar() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
   const menuItems = ["Charging", "Vehicle Accessories", "Apparel", "Lifestyle"];
   const mobileMenuItems = [...menuItems, "Support"];
 
   const handleMouseEnter = (item) => {
-    clearTimeout(hoverTimeout.current);
+    clearTimeout(hoverTimeout.current); // Clear any pending full close
+    clearTimeout(closeOthersTimeout.current); // Clear any pending close of others
+
+    // Immediately open the current dropdown
     if (item === "Charging") {
       setIsChargingDropdownOpen(true);
-      setActiveMenu(null);
-      setIsVehicleDropdownOpen(false);
+      setActiveMenu(null); // Ensure ShopMegaMenu is closed
     } else if (item === "Vehicle Accessories") {
       setIsVehicleDropdownOpen(true);
-      setActiveMenu(null);
-      setIsChargingDropdownOpen(false);
+      setActiveMenu(null); // Ensure ShopMegaMenu is closed
     } else if (item === "Apparel") {
       setIsApparelDropdownOpen(true);
+      setActiveMenu(null); // Ensure ShopMegaMenu is closed
+    } else if (item === "Lifestyle") {
+      // Handle Lifestyle separately
+      setIsLifestyleDropdownOpen(true);
       setActiveMenu(null);
       setIsChargingDropdownOpen(false);
       setIsVehicleDropdownOpen(false);
+      setIsApparelDropdownOpen(false);
     } else {
+      // For ShopMegaMenu items, if any remain (currently none)
       setActiveMenu(item);
       setIsChargingDropdownOpen(false);
       setIsVehicleDropdownOpen(false);
       setIsApparelDropdownOpen(false);
+      setIsLifestyleDropdownOpen(false); // Also close lifestyle if other mega menu item is chosen
     }
+
+    // Close other dropdowns after a very short delay to allow for smooth cross-fade
+    closeOthersTimeout.current = setTimeout(() => {
+      if (item !== "Charging") setIsChargingDropdownOpen(false);
+      if (item !== "Vehicle Accessories") setIsVehicleDropdownOpen(false);
+      if (item !== "Apparel") setIsApparelDropdownOpen(false);
+      if (item !== "Lifestyle") setIsLifestyleDropdownOpen(false);
+      if (item !== "Lifestyle") setActiveMenu(null); // Only close if not currently lifestyle
+    }, 100); // 100ms delay for closing others
   };
 
   const handleMouseLeave = () => {
+    clearTimeout(closeOthersTimeout.current); // Clear any pending close of others
     hoverTimeout.current = setTimeout(() => {
       setActiveMenu(null);
       setIsChargingDropdownOpen(false);
       setIsVehicleDropdownOpen(false);
       setIsApparelDropdownOpen(false);
-    }, 300); // 300ms delay before closing
+      setIsLifestyleDropdownOpen(false); // New line
+    }, 300); // Keep this delay to allow mouse to enter dropdown content or prevent accidental closes
   };
 
   const handleMegaMenuEnter = () => {
-    clearTimeout(hoverTimeout.current);
+    clearTimeout(hoverTimeout.current); // Keep this to prevent full menu close
+    clearTimeout(closeOthersTimeout.current); // Also clear close others timeout
   };
 
   return (
@@ -88,10 +112,10 @@ export default function ShopNavbar() {
       <nav className="fixed top-0 z-50 w-full bg-white">
         <div className="mx-auto flex h-14 items-center justify-between px-10">
           {/* LOGO */}
-          <div
-            className={`font-['Tesla'] text-xl uppercase tracking-[0.5em] block`}
-          >
-            Tesla
+          <div className="flex items-center gap-6">
+            <span className="text-xl font-semibold font-['Tesla'] ">TESLA</span>
+            <span >|</span>
+            <span className=" py-1 rounded  text-sm font-medium">Shop</span>
           </div>
 
           {/* DESKTOP MENU */}
@@ -147,11 +171,14 @@ export default function ShopNavbar() {
           </ul>
 
           {/* DESKTOP ICONS */}
-          <div className="hidden lg:flex items-center space-x-2">
-            <IoHelpCircleOutline className="text-[26px]" />
-            <SlGlobe className="text-[20px]" />
-            <HiOutlineUserCircle className="text-[26px]" />
+            <div className="flex items-center gap-4 text-xl">
+          <IoSearchOutline />
+          <IoCartOutline />
+          <div className="flex items-center gap-1 text-sm">
+         
+            <span>Menu</span>
           </div>
+        </div>
 
           {/* MOBILE CLOSE / MENU BUTTON */}
           <button
@@ -170,9 +197,26 @@ export default function ShopNavbar() {
         </div>
       </nav>
 
-      <ChargingAccessoriesDropdown open={isChargingDropdownOpen} />
-      <ShopVehicleDropdown open={isVehicleDropdownOpen} />
-      <ShopApparelDropdown open={isApparelDropdownOpen} />
+      <ChargingAccessoriesDropdown
+        open={isChargingDropdownOpen}
+        onMouseEnter={handleMegaMenuEnter}
+        onMouseLeave={handleMouseLeave}
+      />
+      <ShopVehicleDropdown
+        open={isVehicleDropdownOpen}
+        onMouseEnter={handleMegaMenuEnter}
+        onMouseLeave={handleMouseLeave}
+      />
+      <ShopApparelDropdown
+        open={isApparelDropdownOpen}
+        onMouseEnter={handleMegaMenuEnter}
+        onMouseLeave={handleMouseLeave}
+      />
+      <LifestyleDropdown
+        open={isLifestyleDropdownOpen}
+        onMouseEnter={handleMegaMenuEnter}
+        onMouseLeave={handleMouseLeave}
+      />
 
       {/* MOBILE MAIN MENU */}
       {showMobileMenu && !activeMobileMenu && (
@@ -231,7 +275,7 @@ export default function ShopNavbar() {
 
               <div className="flex items-center justify-between px-4 py-4 rounded-lg hover:bg-gray-100">
                 <div className="flex items-center space-x-4 ">
-                  <HiOutlineUserCircle className="text-4"/>
+                  <HiOutlineUserCircle className="text-4" />
                   <span className="font-medium">Account</span>
                 </div>
                 <IoIosArrowForward className="text-gray-400" />
