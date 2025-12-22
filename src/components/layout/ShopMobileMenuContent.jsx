@@ -109,21 +109,21 @@ function MobileShopContent({ onBack, onClose }) {
       }`}
     >
       {/* HEADER */}
-      <div className="sticky top-0 z-10 flex items-center justify-between  h-14 bg-white px-4">
+      <div className="sticky top-0 z-10 flex items-center justify-between  h-12 bg-white px-4">
         {" "}
         {/* Added sticky, top-0, z-10, bg-white, px-4 */}
         <button onClick={onBack} className="text-xl">
           <IoIosArrowBack />
         </button>
-        <h1 className="text-[16px] font-medium">Apparel</h1>{" "}
+   
         {/* Changed title to Apparel */}
         <button onClick={onClose}>
           <IoClose className="text-xl" />
         </button>
       </div>
 
-      {/* SHOP GRID */}
-      <div className="grid grid-cols-1 gap-3 p-4  mt-6 text-center">
+      {/* SHOP GRID */}<span className="items-start "> <h1 className="text-[18px] p-4 font-medium">Vehicle Accessories</h1></span>
+      <div className="grid grid-cols-1 gap-3 p-4  text-center">    {" "}
         {shopItems.map((item) => (
           <div key={item.name}>
             {" "}
