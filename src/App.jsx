@@ -1,11 +1,12 @@
 import React from "react";
-import Navbar from "./components/layout/Navbar";
 
+import SelfDriving from "./components/homepage/SelfDriving";
 
 export default function App() {
   return (
     <>
-     <Navbar/>
+ 
+     <SelfDriving/>
     </>
   );
 }
