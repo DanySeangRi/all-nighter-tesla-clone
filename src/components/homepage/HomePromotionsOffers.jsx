@@ -3,6 +3,10 @@ import Hero from '../ui/Hero'
 import HomeShowcaseCard from './HomeShowcaseCard'
 import { carModel as HomeShowcaseData } from './data'
 import SlideIndicator from '../ui/SlideIndicator'
+import Button from '../ui/Button'
+import currentOffersImg from '../../assets/images/homepage/Homepage-Grid-Current-Offers.jpg'
+import americanHeroesImg from '../../assets/images/homepage/Homepage-Grid-American-Heroes-v2.jpg'
+import { americanBtn, cardBtn} from "../ui/uiStyle";
 
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -65,7 +69,7 @@ export default function HeroSection() {
     <section>
       <Hero/>
       {/* showcase cards */}
-      <div className="pt-6 pl-3 lg:pt-12 lg:pl-8 relative"> 
+      <section className="pt-6 pl-3 lg:pt-12 lg:pl-8 relative"> 
         <div 
           ref={scrollContainerRef}
           onScroll={handleScroll}
@@ -102,7 +106,57 @@ export default function HeroSection() {
             inactiveColor="bg-gray-300"
           />
         </div>
-      </div>
+      </section>
+
+      {/* offer section */}
+      <section className='flex flex-col grow mx-3 gap-4'>
+        <div className='grid grid-rows-[200px_180px] w-full rounded-lg'>
+            {/* offer image */}
+            <div className='rounded-t-lg overflow-hidden'>
+              <img src={currentOffersImg} 
+              alt="current offer image" 
+              className="w-full h-full object-cover" />
+            </div>
+
+            {/* offer content */}
+            <div className='flex flex-col justify-between bg-[#f4f4f4] rounded-b-lg p-6'>
+              <div>
+                <h2 className='text-[28px] text-[#171a20] font-medium leading-[36px]'>
+                  Current Offers
+                </h2>
+                <p className='text-[17px] text-[#5c5e62]'>
+                  Explore limited-time offers on Tesla vehicles.
+                </p>
+              </div>
+              <div>
+                <Button title={americanBtn[0].title} css={americanBtn[0].css} />
+              </div>
+            </div>
+        </div>
+        <div className='grid grid-rows-[200px_180px] w-full rounded-lg'>
+            {/* offer image */}
+            <div className='rounded-t-lg overflow-hidden'>
+              <img src={americanHeroesImg} 
+              alt="american heroes image" 
+              className="w-full h-full object-cover" />
+            </div>
+
+            {/* offer content */}
+            <div className='flex flex-col justify-between bg-[#f4f4f4] rounded-b-lg p-6'>
+              <div>
+                <h2 className='text-[28px] text-[#171a20] font-medium leading-[36px]'>
+                  American Heroes
+                </h2>
+                <p className='text-[17px] text-[#5c5e62]'>
+                  $500 off for military, first responders, healthcare, teachers and students.
+                </p>
+              </div>
+              <div>
+                <Button title={americanBtn[0].title} css={americanBtn[0].css} />
+              </div>
+            </div>
+        </div>
+      </section>
     </section> 
   )
 }
