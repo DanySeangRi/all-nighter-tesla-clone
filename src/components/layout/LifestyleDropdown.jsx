@@ -6,11 +6,15 @@ const categories = [
   "Bags",
   "Drinkware",
   "Mini Teslas",
-  "Outdoor & Tech",
+
   "Gift Card",
 ];
 
-export default function LifestyleDropdown({ open, onMouseEnter, onMouseLeave }) {
+export default function LifestyleDropdown({
+  open,
+  onMouseEnter,
+  onMouseLeave,
+}) {
   return (
     <div
       className={`absolute top-10 left-0 w-full bg-white z-40 overflow-hidden
@@ -26,13 +30,12 @@ export default function LifestyleDropdown({ open, onMouseEnter, onMouseLeave }) 
     >
       <div className="px-20 py-14">
         <div className="grid grid-cols-[1.2fr_2fr] gap-24">
-
           {/* LEFT SIDE – CATEGORIES */}
-          <div className="grid grid-cols-3 gap-x-16 gap-y-14">
+          <div className="grid grid-cols-4 gap-x-16 ">
             {categories.map((item) => (
               <div key={item}>
                 <p className="text-sm font-medium">{item}</p>
-                <div className="mt-3 h-[3px] w-full bg-gray-300"></div>
+                <div className="mt-3 h-0.75 w-full bg-gray-300"></div>
               </div>
             ))}
           </div>
@@ -46,7 +49,6 @@ export default function LifestyleDropdown({ open, onMouseEnter, onMouseLeave }) 
             />
             <p className="mt-6 text-xl font-medium">Cybertruck for Kids</p>
           </div>
-
         </div>
       </div>
     </div>

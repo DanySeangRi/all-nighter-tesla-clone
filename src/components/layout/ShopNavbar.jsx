@@ -16,22 +16,13 @@ export default function ShopNavbar() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeMobileMenu, setActiveMobileMenu] = useState(null);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isChargingDropdownOpen, setIsChargingDropdownOpen] = useState(false);
   const [isVehicleDropdownOpen, setIsVehicleDropdownOpen] = useState(false);
   const [isApparelDropdownOpen, setIsApparelDropdownOpen] = useState(false);
   const [isLifestyleDropdownOpen, setIsLifestyleDropdownOpen] = useState(false); // New state
   const hoverTimeout = useRef(null); // Add useRef for timeout management
-  const closeOthersTimeout = useRef(null); // New ref for close others timeout
-
-  useEffect(() => {
-    if (isMobileMenuOpen && !showMobileMenu) {
-      setTimeout(() => setShowMobileMenu(true), 0);
-    } else if (!isMobileMenuOpen && showMobileMenu) {
-      const timeoutId = setTimeout(() => setShowMobileMenu(false), 300); // 300ms matches transition duration
-      return () => clearTimeout(timeoutId);
-    }
-  }, [isMobileMenuOpen, showMobileMenu]);
+  const closeOthersTimeout = useRef(null); // New ref for close others others timeout
 
   // Effect to close mobile menu on desktop resize
   useEffect(() => {
@@ -48,7 +39,14 @@ export default function ShopNavbar() {
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
   const menuItems = ["Charging", "Vehicle Accessories", "Apparel", "Lifestyle"];
-  const mobileMenuItems = [...menuItems, "Support"];
+  const mobileMenuItems = [
+    ...menuItems,
+    "Shop FAQ",
+    "view or Mange Order",
+    "Conttact Us",
+    "Sign In",
+    "Support",
+  ];
 
   const handleMouseEnter = (item) => {
     clearTimeout(hoverTimeout.current); // Clear any pending full close
@@ -114,7 +112,7 @@ export default function ShopNavbar() {
           {/* LOGO */}
           <div className="flex items-center gap-6">
             <span className="text-xl font-semibold font-['Tesla'] ">TESLA</span>
-            <span >|</span>
+            <span>|</span>
             <span className=" py-1 rounded  text-sm font-medium">Shop</span>
           </div>
 
@@ -182,19 +180,20 @@ export default function ShopNavbar() {
                 setIsMobileMenuOpen(!isMobileMenuOpen);
                 setActiveMobileMenu(null);
               }}
-              className="lg:hidden px-4 py-2 bg-gray-100 transition-transform duration-150 active:scale-95"
+              className="lg:hidden bg-gray-100 transition-transform duration-150 active:scale-95"
             >
               {isMobileMenuOpen ? (
                 <IoClose className="text-xl" />
               ) : (
-                <IoMenuOutline className="text-xl" />
+                <span className="text-sm p-2 rounded-sm  bg-gray-100">
+                  Menu
+                </span>
               )}
             </button>
 
             {/* Desktop Menu Button (Desktop Only) */}
             <button
-              onMouseEnter={() => handleMouseEnter("Lifestyle")} // Assuming "Lifestyle" or a generic "Menu" leads to ShopMegaMenu
-              onMouseLeave={handleMouseLeave}
+              onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
               className="hidden lg:inline-flex px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer text-sm font-medium"
             >
               Menu
@@ -224,24 +223,34 @@ export default function ShopNavbar() {
         onMouseLeave={handleMouseLeave}
       />
 
-      {/* MOBILE MAIN MENU */}
-      {showMobileMenu && !activeMobileMenu && (
+      {/* DESKTOP BLUR BACKDROP */}
+      <div
+        className={`${
+          isDesktopMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        } fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-500 hidden lg:block`}
+        onClick={() => {
+          setIsDesktopMenuOpen(false);
+        }}
+      />
+
+      {/* DESKTOP MAIN MENU */}
+      {isDesktopMenuOpen && (
         <div
-          className={`fixed inset-0 z-60 bg-gray-100 pt-14 transform transition-transform duration-300 ease-out lg:hidden ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          className={`fixed top-0 bottom-0 right-0 w-1/4 z-60 bg-white pt-14 transform transition-transform duration-700 ease-in-out overflow-x-hidden hidden lg:block ${
+            isDesktopMenuOpen
+              ? "translate-x-0 visible"
+              : "translate-x-full invisible"
           }`}
           onClick={() => {
-            setIsMobileMenuOpen(false);
-            setActiveMobileMenu(null);
+            // Clicking inside the desktop menu should not close it
+            // Unless there's a specific close button within its content
           }}
         >
-          {/* HEADER (ONLY CLOSE) */}
+          {/* HEADER (Desktop Close Button) */}
           <div className="absolute top-0 right-0 h-14 flex items-center px-4 ">
             <button
-              onClick={(e) => {
-                e.stopPropagation(); // Stop propagation to prevent closing menu when close button is clicked
-                setIsMobileMenuOpen(false);
-                setActiveMobileMenu(null);
+              onClick={() => {
+                setIsDesktopMenuOpen(false);
               }}
               className="transition-transform duration-150 active:scale-95"
             >
@@ -249,47 +258,139 @@ export default function ShopNavbar() {
             </button>
           </div>
 
-          {/* MENU ITEMS */}
-          <div className="px-4 pt-4" onClick={(e) => e.stopPropagation()}>
-            <ul className="space-y-2">
-              {mobileMenuItems.map((item) => (
-                <li
-                  key={item}
-                  onClick={() =>
-                    menuItems.includes(item) ? setActiveMobileMenu(item) : null
-                  }
-                  className="flex items-center justify-between px-4 py-4 rounded-lg hover:bg-gray-100 cursor-pointer"
-                >
-                  <span className="font-medium">{item}</span>
-                  <IoIosArrowForward className="text-gray-400" />
-                </li>
-              ))}
-            </ul>
-
-            {/* FOOTER */}
-            <div className="mt-6 space-y-2">
-              <div className="flex items-center justify-between  px-4 py-4 hover:bg-gray-100 rounded-lg">
-                <div className="flex items-center space-x-4">
-                  <SlGlobe />
-                  <div>
-                    <p className="font-medium">United States</p>
-                    <p className="text-sm text-gray-500">English</p>
-                  </div>
+          {/* DESKTOP MENU CONTENT */}
+          <div className="px-4 pt-4">
+            <div className="w-72  p-6 space-y-5 text-[15px] text-black">
+              <div className="space-y-4 font-medium">
+                <div className="cursor-pointer hover:opacity-70">Shop FAQ</div>
+                <div className="cursor-pointer hover:opacity-70">
+                  View or Manage Order
                 </div>
-                <IoIosArrowForward className="text-gray-400" />
+                <div className="cursor-pointer hover:opacity-70">
+                  Contact Us
+                </div>
+                <div className="cursor-pointer hover:opacity-70">Sign In</div>
               </div>
 
-              <div className="flex items-center justify-between px-4 py-4 rounded-lg hover:bg-gray-100">
-                <div className="flex items-center space-x-4 ">
-                  <HiOutlineUserCircle className="text-4" />
-                  <span className="font-medium">Account</span>
+              {/* Location */}
+              <div className="pt-4">
+                <div className="flex items-start gap-3 cursor-pointer">
+                  <SlGlobe className="text-lg mt-1" />
+                  <div>
+                    <div className="font-medium">United States</div>
+                    <div className="text-sm text-gray-500">English</div>
+                  </div>
                 </div>
-                <IoIosArrowForward className="text-gray-400" />
               </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* MOBILE BLUR BACKDROP */}
+      <div
+        className={`${
+          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        } fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity duration-500`}
+        onClick={() => {
+          setIsMobileMenuOpen(false);
+          setActiveMobileMenu(null);
+        }}
+      />
+
+      {/* MOBILE MAIN MENU */}
+      {isMobileMenuOpen &&
+        !activeMobileMenu && ( // Changed from showMobileMenu to isMobileMenuOpen
+          <div
+            className={`fixed top-0 bottom-0 right-0 w-[65%] z-60 bg-white pt-14 transform transition-transform duration-700 ease-in-out overflow-x-hidden lg:hidden ${
+              // Changed inset-0 to top-0 bottom-0 right-0 w-1/2; duration and easing; added overflow-x-hidden
+              isMobileMenuOpen
+                ? "translate-x-0 visible"
+                : "translate-x-full invisible" // Added visible/invisible
+            }`}
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              setActiveMobileMenu(null);
+            }}
+          >
+            {" "}
+            {/* HEADER (ONLY CLOSE) */}
+            <div className="absolute top-0 right-0 h-14 flex items-center px-4 ">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation(); // Stop propagation to prevent closing menu when close button is clicked
+                  setIsMobileMenuOpen(false);
+                  setActiveMobileMenu(null);
+                }}
+                className="transition-transform duration-150 active:scale-95"
+              >
+                <IoClose className="text-xl" />
+              </button>
+            </div>
+            {/* MENU ITEMS */}
+            <div className="px-4 pt-4" onClick={(e) => e.stopPropagation()}>
+              {/* SEARCH */}
+              <div className="px-4 pb-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="
+          w-full
+          h-11
+          rounded-sm
+         
+          pl-11 pr-4
+          text-sm
+          outline-none
+          focus:border-black
+          bg-gray-200
+        "
+                  />
+                  <IoSearchOutline className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
+                </div>
+              </div>
+
+              {/* MENU LIST */}
+              <ul className="space-y-2">
+                {mobileMenuItems.map((item) => (
+                  <li
+                    key={item}
+                    onClick={() =>
+                      menuItems.includes(item)
+                        ? setActiveMobileMenu(item)
+                        : null
+                    }
+                    className="
+          flex items-center justify-between
+          px-6 py-2
+          rounded-lg
+          hover:bg-gray-100
+          cursor-pointer
+        "
+                  >
+                    <span className="font-medium">{item}</span>
+                    <IoIosArrowForward className="text-gray-400" />
+                  </li>
+                ))}
+              </ul>
+
+              {/* FOOTER */}
+              <div className="mt-6 space-y-2">
+                <div className="flex items-center justify-between px-6 py-4 hover:bg-gray-100 rounded-lg">
+                  <div className="flex items-center space-x-4">
+                    <SlGlobe />
+                    <div>
+                      <p className="font-medium">United States</p>
+                      <p className="text-sm text-gray-500">English</p>
+                    </div>
+                  </div>
+                  <IoIosArrowForward className="text-gray-400" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
       {/* Conditional rendering for ShopMobileMenuContent */}
       {isMobileMenuOpen && (

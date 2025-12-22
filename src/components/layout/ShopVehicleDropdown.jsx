@@ -64,7 +64,11 @@ const DATA = [
   },
 ];
 
-export default function ShopVehicleDropdown({ open, onMouseEnter, onMouseLeave }) {
+export default function ShopVehicleDropdown({
+  open,
+  onMouseEnter,
+  onMouseLeave,
+}) {
   return (
     <div
       className={`absolute left-0 top-10 w-full bg-white border-t z-40 overflow-hidden
@@ -88,15 +92,12 @@ export default function ShopVehicleDropdown({ open, onMouseEnter, onMouseLeave }
               </h4>
 
               {/* DIVIDER */}
-              <div className="mt-2 mb-6 h-[3px] w-full bg-[#D0D1D2]" />
+              <div className="mt-2 mb-6 h-0.75 w-full bg-[#D0D1D2]" />
 
               {/* LINKS */}
               <ul className="space-y-4 text-[14px] text-[#393C41]">
                 {col.items.map((item) => (
-                  <li
-                    key={item}
-                    className="cursor-pointer hover:underline"
-                  >
+                  <li key={item} className="cursor-pointer hover:underline">
                     {item}
                   </li>
                 ))}
