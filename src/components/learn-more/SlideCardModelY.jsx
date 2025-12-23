@@ -129,7 +129,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                 </div>
 
                 {/* Pagination Dots */}
-                <div className="flex justify-center items-center gap-1 mt-4">
+                <div className="flex justify-center items-center gap-1">
                     {cards.map((_, i) => (
                         <button
                             key={i}
