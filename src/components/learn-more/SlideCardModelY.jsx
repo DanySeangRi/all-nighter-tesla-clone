@@ -60,7 +60,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
 
             <Hero data={learnMoreSlide} />
 
-            <div className="py-12 mx-auto sm:px-6 md:px-8 lg:py-18">
+            <div className="pb-[104px] pt-[80px] mx-auto md:pb-[160px]">
 
                 <div className="text-center mb-8 md:mb-12">
                     <h2 className="text-[40px] md:text-4xl font-semibold mb-2 ">{title.maintitle}</h2>
