@@ -1,9 +1,10 @@
-    @font-face {
-    font-family: 'steav';
-    font-style: normal;
-    font-weight: normal;
-    src: local('TESLA Regular'), url('TESLA.woff') format('woff');
-    }
+@import "tailwindcss";
+@font-face {
+  font-family: "steav";
+  font-style: normal;
+  font-weight: normal;
+  src: local("TESLA Regular"), url("TESLA.woff") format("woff");
+}
 :root {
   --transition-custom-tesla-ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -12,11 +13,6 @@
   transition-timing-function: var(--transition-custom-tesla-ease);
 }
 
-@import "tailwindcss";
-    
-
-
-    
 .no-scrollbar {
   -ms-overflow-style: none; /* IE & Edge */
   scrollbar-width: none; /* Firefox */

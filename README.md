@@ -37,50 +37,53 @@ The goal is to practice:
 ```bash
 src/
 ├── assets/
-│ ├── images/
-│ ├── icons/
-│ ├── videos/
-│ └── styles/
-│ ├── global.css
-│ └── animations.css
+│   ├── images/
+│   │   ├── homepage
+│   │   ├── learn-more
+│   │   ├── shop
+│   │   └── navbar
 │
 ├── components/
-│ ├── layout/
-│ │ ├── Navbar.jsx
-│ │ ├── Footer.jsx
-│ │ └── Layout.jsx
-│ │
-│ ├── home/
-│ │ ├── HeroSection.jsx
-│ │ ├── ProductSection.jsx
-│ │ └── ScrollIndicator.jsx
-│ │
-│ ├── learnmore/
-│ │ └── FeatureCards.jsx
-│ │
-│ ├── shop/
-│ │ ├── ProductCard.jsx
-│ │ └── ProductList.jsx
-│ │
-│ ├── ui/
-│ │ ├── Button.jsx
-│ │ └── Card.jsx
-│ │
-│ └── common/
-│ └── Container.jsx
+│   ├── layout/
+│   │   ├── Navbar.jsx
+│   │   └── Footer.jsx
+│
+│   ├── ui/
+│   │   ├── heroData.js
+│   │   ├── Hero.jsx
+│   │   ├── Button.jsx
+│   │   ├── NavigationButtons.jsx
+│   │   └── SlideIndicator.jsx
+│   |
+│   ├── common/
+│   │   └── Container.jsx
+|   |
+│   ├── homepage/
+│   │   ├── data.js
+│   │   ├── HomePromotionsOffers.jsx
+│   │   └── HomeShowcaseCard.jsx
+│
+│   ├── learn-more/
+│   │   ├── learnMoreData.js
+│   │   ├── ExploreModelY.jsx
+│   │   └── ModelYHero.jsx
+│
+│   ├── shop/
+│   │   ├── data/
+│   │   ├── ProductCard.jsx
+│   │   ├── ProductList.jsx
+│   │   └── BestSellerCard.jsx
 │
 ├── pages/
-│ ├── Home.jsx
-│ ├── LearnMore.jsx
-│ ├── Shop.jsx
-│ └── ProductDetail.jsx
-│
-├── data/
-│ ├── vehicles.js
-│ └── products.js
+│   ├── Home.jsx
+│   ├── LearnMore.jsx
+│   └── Shop.jsx
 │
 ├── routes/
-│ └── AppRoutes.jsx
+│   └── AppRoutes.jsx
+│
+├── hooks/
+│   └── useScroll.js
 │
 ├── App.jsx
 ├── main.jsx
