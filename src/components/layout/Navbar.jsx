@@ -62,12 +62,13 @@ export default function Navbar() {
       <nav className="fixed top-0 z-50 w-full bg-white">
         <div className="mx-auto flex h-14 items-center justify-between px-5 ">
           {/* LOGO */}
+           <NavLink to="/" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
           <div
             className={`font-['Orbitron'] text-xl uppercase tracking-[0.5em] block`}
           >
-        <img src={tesla2} alt="" className="w-30" />
+             <img src={tesla2} alt="" className="w-30" />
           </div>
-
+        </NavLink>
           {/* DESKTOP MENU */}
           <ul className="hidden lg:flex text-sm font-medium">
             {menuItems.map((item, index) => (

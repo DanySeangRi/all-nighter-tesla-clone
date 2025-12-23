@@ -117,7 +117,7 @@ export default function ShopNavbar() {
 
               <img src={tesla} alt="" className="w-30"/>
             </span>
-              </NavLink>
+         </NavLink>
             <span>|</span>
              <NavLink to="/shop" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
             <span className=" py-1 rounded  text-sm font-medium">Shop</span>

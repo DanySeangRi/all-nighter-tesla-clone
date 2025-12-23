@@ -7,7 +7,7 @@ import Button from '../ui/Button'
 import currentOffersImg from '../../assets/images/homepage/Homepage-Grid-Current-Offers.jpg'
 import americanHeroesImg from '../../assets/images/homepage/Homepage-Grid-American-Heroes-v2.jpg'
 import { americanBtn} from "../ui/uiStyle";
-
+import { NavLink } from 'react-router'
 import { cardBtn } from "../ui/uiStyle";
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -116,8 +116,16 @@ export default function HeroSection() {
                   width='w-82.5 lg:w-[606px] xl:w-[1024px]'
                   height='h-130 lg:w-[520px] xl:h-[580px]'
                   btn1={<Button title= {cardBtn[0].title} css={cardBtn[0].css}/>}
-                   btn2={<Button title= {cardBtn[1].title} css={cardBtn[1].css}/>}
-                />
+                    btn2={
+      index === 0 ? (
+        <NavLink to="/learnmore">
+          <Button title={cardBtn[1].title} css={cardBtn[1].css} />
+        </NavLink>
+      ) :  <Button title={cardBtn[1].title} css={cardBtn[1].css} />
+    }
+                />{
+                  
+                }
               </div>
             ))}
           </div>
@@ -147,7 +155,7 @@ export default function HeroSection() {
               <img
                 src={image}
                 alt={alt}
-                className="w-full h-full lg:w-[180px] object-cover"
+                className="w-full h-full lg:w-45 object-cover"
               />
             </div>
 

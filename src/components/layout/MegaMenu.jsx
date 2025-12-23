@@ -160,7 +160,17 @@ export default function MegaMenu({
       <div className="grid grid-cols-[3fr_1fr] gap-10">
         {/* LEFT PRODUCTS */}
         <div className="grid grid-cols-4 gap-6">
-          {items.map((item) => (
+          {items.map((item,index) =>{
+             let link = "/";
+
+          if (index === 2) link = "/learnmore";
+   
+          
+          return(
+            <NavLink
+              to={link}
+              className="underline cursor-pointer px-2 py-1 rounded-lg"
+            >
             <div key={item.name} className="text-center">
               {/* IMAGE ONLY ANIMATION */}
               <div className="h-24 flex items-center justify-center overflow-hidden">
@@ -173,10 +183,10 @@ export default function MegaMenu({
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-8"
                     }
+                  
                   `}
                 />
               </div>
-
               {/* STATIC TEXT */}
               <h4 className="mt-3 text-[15px] font-medium text-[#171A20]">
                 {item.name}
@@ -193,7 +203,9 @@ export default function MegaMenu({
                 )}
               </div>
             </div>
-          ))}
+            </NavLink>
+          )})}
+
         </div>
 
         {/* RIGHT LINKS (STATIC) */}
