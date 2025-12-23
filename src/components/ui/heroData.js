@@ -18,7 +18,7 @@ import cyberLogo from "../../assets/images/homepage/cybertruck-640w.webp"
 export const fallbackSlides = [
     {
     title: "Model Y",
-    subtitle: "Order Online for Touchless Delivery",
+    subtitle: "Lease Price Increase on December 26",
     date: "",
     button1: "Order Now",
     button2: "View Inventory",
@@ -30,7 +30,7 @@ export const fallbackSlides = [
     },
     {
     titleLogo: cyberLogo,
-    subtitle: "Order Online for Touchless Delivery",
+    subtitle: "Lease Price Increase on December 26",
     date: "",
     button1: "Order Now",
     button2: "View Inventory",

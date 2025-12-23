@@ -7,6 +7,7 @@ import Button from "../ui/Button";
 import currentOffersImg from "../../assets/images/homepage/Homepage-Grid-Current-Offers.jpg";
 import americanHeroesImg from "../../assets/images/homepage/Homepage-Grid-American-Heroes-v2.jpg";
 import { americanBtn, cardBtn } from "../ui/uiStyle";
+import NavigationButtons from "../ui/NavigationButtons";
 
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,6 +53,19 @@ export default function HeroSection() {
     }
   };
 
+  const nextSlide = () => {
+    if (HomeShowcaseData.length === 0) return;
+    const nextIndex = (currentIndex + 1) % HomeShowcaseData.length;
+    goToSlide(nextIndex);
+  };
+
+  const prevSlide = () => {
+    if (HomeShowcaseData.length === 0) return;
+    const prevIndex =
+      (currentIndex - 1 + HomeShowcaseData.length) % HomeShowcaseData.length;
+    goToSlide(prevIndex);
+  };
+
   const handleScroll = (e) => {
     const container = e.target;
     const scrollLeft = container.scrollLeft;
@@ -95,7 +109,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="">
+    <section>
       <Hero />
       {/* showcase cards */}
       <section className="pt-6 pl-3 lg:pt-12 lg:pl-9 xl:pl-12 relative">
@@ -106,7 +120,6 @@ export default function HeroSection() {
         >
           <div className="flex gap-4 xl:gap-6">
             {" "}
-            {/* CHANGED: Removed pr-3 */}
             {HomeShowcaseData.map((item, index) => (
               <div
                 key={index}
@@ -146,6 +159,8 @@ export default function HeroSection() {
             inactiveColor="bg-gray-300"
           />
         </div>
+
+        <NavigationButtons onPrev={prevSlide} onNext={nextSlide} />
       </section>
 
       {/* offer section */}
