@@ -64,7 +64,7 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
           <button className="bg-blue-600 text-white grow w-46.75 md:w-41 lg:w-50 h-10 rounded shadow-sm hover:bg-blue-700 transition-colors text-sm font-medium cursor-pointer">
             {slides[currentIndex].button1}
           </button>
-          <button className="bg-white/90 text-gray-800 grow w-46.75 md:w-41 lg:w-50 h-10 rounded shadow-sm hover:bg-white transition-colors text-sm font-medium cursor-pointer">
+          <button className="bg-white text-gray-800 grow w-46.75 md:w-41 lg:w-50 h-10 rounded shadow-sm hover:bg-white/90 transition-colors text-sm font-medium cursor-pointer">
             {slides[currentIndex].button2}
           </button>
         </div>

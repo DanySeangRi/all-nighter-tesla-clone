@@ -1,23 +1,23 @@
-import React from 'react';
-import Card from './Card';
-import modelS from '../../assets/images/homepage/Homepage-Card-Model-S-Desktop-US-v3.jpg';
-import modelX from '../../assets/images/homepage/Homepage-Card-Model-X-New-Desktop-US-v4.jpg';
-import cybertruck from '../../assets/images/homepage/Homepage-Card-Cybertruck-Desktop-US-v3.jpg';
+import React from "react";
+import Card from "./Card";
+import modelS from "../../assets/images/homepage/Homepage-Card-Model-S-Desktop-US-v3.jpg";
+import modelX from "../../assets/images/homepage/Homepage-Card-Model-X-New-Desktop-US-v4.jpg";
+import cybertruck from "../../assets/images/homepage/Homepage-Card-Cybertruck-Desktop-US-v3.jpg";
 
 const products = [
   {
-    name: 'Model S',
-    price: '$72,990',
+    name: "Model S",
+    price: "$72,990",
     image: modelS,
   },
   {
-    name: 'Model X',
-    price: '$77,990',
+    name: "Model X",
+    price: "$77,990",
     image: modelX,
   },
   {
-    name: 'Cybertruck',
-    price: '$60,990',
+    name: "Cybertruck",
+    price: "$60,990",
     image: cybertruck,
   },
 ];

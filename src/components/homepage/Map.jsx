@@ -100,8 +100,8 @@ const Map = () => {
 
             {/* Buttons */}
             <div className="flex flex-row gap-4 mt-10">
-             <Button title={mapBtn[0].title} css={mapBtn[0].css}/>
-            <Button title ={mapBtn[1].title} css={mapBtn[1].css}/>
+              <Button title={mapBtn[0].title} css={mapBtn[0].css} />
+              <Button title={mapBtn[1].title} css={mapBtn[1].css} />
             </div>
           </div>
         </div>
