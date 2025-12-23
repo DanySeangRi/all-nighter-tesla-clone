@@ -32,9 +32,24 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
       {/* Content */}
       <div className="relative h-full flex flex-col items-center text-white pt-16 px-6 text-center z-10">
         {/* Content Title */}
-        <h1 className="text-[40px] md:text-[56px] font-medium transition-all duration-700">
-          {slides[currentIndex].title}
-        </h1>
+        <div className="flex flex-col items-center gap-2">
+
+          {/* If this slide has a text title, show it */}
+          {slides[currentIndex].title && (
+            <h1 className="text-[40px] md:text-[56px] font-medium transition-all duration-700 mt-12">
+              {slides[currentIndex].title}
+            </h1>
+          )}
+
+          {/* If this slide has a logo, show it */}
+          {slides[currentIndex].titleLogo && (
+            <img
+              src={slides[currentIndex].titleLogo}
+              alt="Slide logo"
+              className="w-60 md:w-80 mt-12"
+            />
+          )}
+        </div>
 
         {/* Content Description */}
         <p className="text-sm mb-3">

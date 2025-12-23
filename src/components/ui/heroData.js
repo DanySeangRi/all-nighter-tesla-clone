@@ -11,14 +11,17 @@ import CybertruckMobile from "../../assets/images/homepage/Homepage-Promo-Cybert
 import CybertruckTablet from "../../assets/images/homepage/Homepage-Promo-Cybertruck-Tablet-US-v2.jpg";
 import CybertruckDesktop from "../../assets/images/homepage/Homepage-Promo-Cybertruck-Desktop-US-v2.jpg";
 
+//Cybertruck Logo
+import cyberLogo from "../../assets/images/homepage/cybertruck-640w.webp"
+
 
 export const fallbackSlides = [
     {
     title: "Model Y",
     subtitle: "Order Online for Touchless Delivery",
     date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
+    button1: "Order Now",
+    button2: "View Inventory",
     images: {
         mobile: ModelYMobile,
         tablet: ModelYTablet,
@@ -26,11 +29,11 @@ export const fallbackSlides = [
         },
     },
     {
-    title: "Cybertruck",
+    titleLogo: cyberLogo,
     subtitle: "Order Online for Touchless Delivery",
     date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
+    button1: "Order Now",
+    button2: "View Inventory",
     images: {
         mobile: CybertruckMobile,
         tablet: CybertruckTablet,

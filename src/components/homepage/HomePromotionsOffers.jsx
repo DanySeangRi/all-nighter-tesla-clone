@@ -110,13 +110,14 @@ export default function HeroSection() {
                   title={item.title}
                   mobileImage={item.imageMobile}
                   desktopImage={item.imageDesktop}
+                  cyberLogo={item.cyberLogo}
                   name={item.name}
                   underline="underline"
                   description={item.description}
                   width='w-82.5 lg:w-[606px] xl:w-[1024px]'
                   height='h-130 lg:w-[520px] xl:h-[580px]'
                   btn1={<Button title= {cardBtn[0].title} css={cardBtn[0].css}/>}
-                   btn2={<Button title= {cardBtn[1].title} css={cardBtn[1].css}/>}
+                  btn2={<Button title= {cardBtn[1].title} css={cardBtn[1].css}/>}
                 />
               </div>
             ))}

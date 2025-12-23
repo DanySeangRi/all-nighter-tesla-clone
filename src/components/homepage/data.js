@@ -23,7 +23,8 @@ const carModel = [
       "./src/assets/images/homepage/Homepage-Card-Cybertruck-Mobile-US-v3.jpg",
     imageDesktop:
       "./src/assets/images/homepage/Homepage-Card-Cybertruck-Desktop-US-v3.jpg",
-    name: "Cybertruck",
+    cyberLogo:
+      "./src/assets/images/homepage/cybertruck-640w.webp",
     description: "3.99% APR Available",
   },
   {
