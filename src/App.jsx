@@ -1,6 +1,7 @@
 import React from 'react';
-import Footer from './components/learn-more/Footer';
-import TeslaSpecCard from './components/learn-more/TeslaSpecCard';
+import TeslaSpecCard from './components/learn-more/TeslaSpecCard.jsx';
+import { Divide } from 'lucide-react';
+import Navbar from './components/layout/Navbar.jsx';
 
 function App() {
   return (

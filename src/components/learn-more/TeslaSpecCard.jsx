@@ -389,7 +389,7 @@ const TeslaSpecCard = () => {
       {/* Footer with Background Image */}
       <div className="bg-black h-50"></div>
       <div
-        className="relative h-screen sm:h-80 md:h-96 lg:h-[600px] xl:h-[700px] 2xl:h-[800px] bg-cover bg-center"
+        className="relative h-screen sm:h-80 md:h-96 lg:h-150 xl:h-175 2xl:h-200 bg-cover bg-center"
         style={{ 
           backgroundImage: `url(${footerImage})`,
           backgroundPosition: 'center',
