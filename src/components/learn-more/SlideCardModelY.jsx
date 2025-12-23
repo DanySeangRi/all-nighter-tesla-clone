@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import Hero from '../ui/Hero';
 import { learnMoreSlide } from '../ui/heroData';
 import ExploreModelY from './ExploreModelY';
+import ModelYFeatures from './ModelYFeatures';
 
 
 export default function SlideCardModelY({ cards = [], title = [] }) {
@@ -141,6 +142,8 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
             </div>
 
             <ExploreModelY />
+
+            <ModelYFeatures />
         </section>
     );
 }
