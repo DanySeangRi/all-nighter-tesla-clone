@@ -104,6 +104,49 @@ export const connected = {
   ]
 };
 
+export const videos = [
+    {
+      id: 'big-card',
+      title: 'Tesla Big Card Video',
+      src: 'https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto:best/Model-Y-Standard-FSD-Desktop.mp4',
+      
+    },
+    {
+      id: 'small-card',
+      title: 'Tesla Small Card Video',
+      src: 'https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto:best/Model-Y-Standard-FSD-Carousel-Slide-3-Desktop-NA.mp4'
+    },
+  ];
+import slideImage1 from "../../assets/images/learn-more/Model-Y-Standard-FSD-Carousel-Slide-1-Desktop.avif";
+import slideImage2 from "../../assets/images/learn-more/Model-Y-Standard-FSD-Carousel-Slide-2-Desktop.avif";
+export const slides = [
+    {
+      type: "image",
+      image: slideImage1,
+      title: "Full Self-Driving (Supervised)",
+      description:
+        "A suite of advanced driver-assistance features designed to provide more active guidance and assisted driving under your active supervision.",
+    },
+    {
+      type: "image",
+      image: slideImage2,
+      title: "Front-Facing Cameras",
+      description:
+        "Enhanced visibility for greater safety, easier parking and driver-assistance features like Actually Smart Summon.",
+    },
+    {
+      type: "video",
+      title: "Blind Spot Monitoring",
+      description:
+        "Illuminated warning lights and on-screen visualizations help you safely check your surroundings.",
+    },
+
+  ];
+
+  
+
+ 
+
 
 
 export const cards = [
