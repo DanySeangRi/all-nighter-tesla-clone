@@ -2,6 +2,8 @@ import React, { useState, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
 import Hero from '../ui/Hero';
 import { learnMoreSlide } from '../ui/heroData';
+import ExploreModelY from './ExploreModelY';
+
 
 export default function SlideCardModelY({ cards = [], title = [] }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -138,6 +140,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                 </div>
             </div>
 
+            <ExploreModelY />
         </section>
     );
 }
