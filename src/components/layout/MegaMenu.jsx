@@ -160,7 +160,7 @@ export default function MegaMenu({
       <div className="grid grid-cols-[3fr_1fr] gap-10">
         {/* LEFT PRODUCTS */}
         <div className="grid grid-cols-4 gap-6">
-          {items.map((item, i) => (
+          {items.map((item) => (
             <div key={item.name} className="text-center">
               {/* IMAGE ONLY ANIMATION */}
               <div className="h-24 flex items-center justify-center overflow-hidden">
@@ -268,7 +268,7 @@ export default function MegaMenu({
   );
 
   let content = null;
-  let transitionClass = "ease-out"; // Default transition, likely not needed anymore for outer container
+  // let transitionClass = "ease-out"; // Default transition, likely not needed anymore for outer container
   let additionalContainerClasses = ""; // For discover layout's specific centering
 
   if (activeMenu && data) {
@@ -300,12 +300,12 @@ export default function MegaMenu({
         break;
       case "Discover":
         content = renderDiscoverLayout(data.columns);
-        transitionClass = "ease-initial";
+        // transitionClass = "ease-initial";
         additionalContainerClasses = "flex justify-center"; // Apply to inner content wrapper if needed
         break;
       case "Shop":
         content = renderShopLayout(data.items);
-        transitionClass = "ease-out";
+        // transitionClass = "ease-out";
         break;
       default:
         content = null;
