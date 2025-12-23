@@ -8,6 +8,8 @@ import Map from '../src/components/homepage/Map'
 import HomePromotionsOffers from '../src/components/homepage/HomePromotionsOffers';
 
 export default function Home() {
+  const { x, y } = useScroll();
+
   return (
     <div >
       <Navbar/>

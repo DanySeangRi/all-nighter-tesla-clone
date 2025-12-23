@@ -3,6 +3,7 @@ import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
+import tesla2 from "../../../public/telsa.svg"
 import { NavLink } from "react-router";
 import MegaMenu from "./MegaMenu";
 import MobileMenuContent from "./MobileMenuContent";
@@ -62,9 +63,9 @@ export default function Navbar() {
         <div className="mx-auto flex h-14 items-center justify-between px-5 ">
           {/* LOGO */}
           <div
-            className={`font-['Tesla'] text-xl uppercase tracking-[0.5em] block`}
+            className={`font-['Orbitron'] text-xl uppercase tracking-[0.5em] block`}
           >
-            Tesla
+        <img src={tesla2} alt="" className="w-30" />
           </div>
 
           {/* DESKTOP MENU */}
@@ -131,7 +132,7 @@ export default function Navbar() {
           <div className="absolute top-0 right-0 h-14 flex items-center px-4 ">
             <button
               onClick={(e) => {
-                e.stopPropagation(); // Stop propagation to prevent closing menu when close button is clicked
+                e.stopPropagation();
                 setIsMobileMenuOpen(false);
                 setActiveMobileMenu(null);
               }}
@@ -197,8 +198,8 @@ export default function Navbar() {
         <MegaMenu
           activeMenu={activeMenu}
           open={activeMenu !== null}
-          onMouseEnter={handleMegaMenuEnter} // Pass handler to MegaMenu
-          onMouseLeave={handleMouseLeave} // Pass handler to MegaMenu
+          onMouseEnter={handleMegaMenuEnter} 
+          onMouseLeave={handleMouseLeave}
         />
       )}
     </div>
