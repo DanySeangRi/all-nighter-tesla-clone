@@ -1,8 +1,7 @@
 import React from "react";
-import SlideCardModelY from "./components/learn-more/SlideCardModelY";
-import {headerTitleCards, cards} from "./components/learn-more/learnMoreData"
+import LearnMore from "../pages/LearnMore";
 export default function App() {
   return <>
-  <SlideCardModelY cards={cards} title={headerTitleCards}/>
+  <LearnMore/>
   </>;
 }

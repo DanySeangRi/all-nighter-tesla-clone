@@ -5,12 +5,12 @@ import {learnMoreData,affordabilityData, connected} from './learnMoreData'
 const ModelYFeatures = () => {
     
     return (
-        <section className='max-w-360 mx-auto bg-white overflow-hidden font-sans antialiased' style={{ fontFamily: '"Universal Sans Display", -apple-system, Arial, sans-serif' }}>
+        <section >
 
             {/* --- SECTION 1: EVERYTHING YOU WANT --- */}
             <section className='card'>
                 <div className=' md:px-12'>
-                    <div className='w-full h-122.5 min-[1440px]:h-168 bg-amber-400 relative rounded-none min-[431px]:rounded-xl overflow-hidden'>
+                    <div className='w-full h-142.5 lg:h-225  bg-amber-400 relative rounded-none min-[431px]:rounded-xl overflow-hidden'>
                         {/* REPLACED WITH NEW COMPONENT */}
                         <FeatureVideo src="https://digitalassets.tesla.com/tesla-contents/video/upload/f_auto,q_auto:best/Model-Y-Standard-Everything-Mobile.mp4" />
                     </div>
@@ -22,7 +22,7 @@ const ModelYFeatures = () => {
 
             {/* --- SECTION 2: MORE THAN A CAR --- */}
             <section className='secound-card mt-24 md:mt-36 min-[1440px]:mt-40'>
-                <div className='px-0 md:px-12'>
+                <div className='px-0'>
                     <div className=' md:px-12'>
                         <div className='w-full h-122.5 min-[1440px]:h-168 bg-amber-400 relative rounded-none min-[431px]:rounded-xl overflow-hidden'>
                             {/* REPLACED WITH NEW COMPONENT */}

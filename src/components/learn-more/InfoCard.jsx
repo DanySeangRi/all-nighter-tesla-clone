@@ -3,8 +3,8 @@ import React from 'react';
 const InfoCard = ({ data }) => {
   if (data.layout === "small") {
     return (
-      <section className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6 mb-16">
+      <section className="bg-white py-20 px-10 lg:px-48 ">
+        <div className=" mx-auto px-6 mb-16">
           <h2 className="text-[40px] font-semibold leading-tight text-gray-900 mb-3 tracking-tight">
             {data.sectionTitle}
           </h2>
@@ -13,7 +13,7 @@ const InfoCard = ({ data }) => {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="  mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-4 xl:grid-cols-4 gap-6 ">
             {data.cards.map((item) => {
               const Icon = item.icon;
@@ -43,8 +43,8 @@ const InfoCard = ({ data }) => {
     )
   }
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-6 mb-16">
+    <section className="bg-white py-20 px-10 lg:px-48">
+      <div className=" mx-auto px-6 mb-16">
         <h2 className="text-[40px] font-semibold leading-tight  text-gray-900 mb-3 tracking-tight">
           {data.sectionTitle}
         </h2>
@@ -53,7 +53,7 @@ const InfoCard = ({ data }) => {
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6">
+      <div className=" mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 gap-6">
           {data.cards.map((item) => {
             const Icon = item.icon;

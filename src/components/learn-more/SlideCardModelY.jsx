@@ -56,7 +56,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
 
     return (
 
-        <section className="w-full">
+        <section className="w-full ">
 
             <Hero data={learnMoreSlide} />
 
@@ -72,7 +72,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                     <div
                         ref={scrollRef}
                         onScroll={handleScroll}
-                        className="carousel-viewport flex overflow-x-auto snap-x snap-mandatory gap-2 lg:gap-4 pb-6 scroll-smooth"
+                        className="px-8 lg:px-41.5 carousel-viewport flex overflow-x-auto  snap-x snap-mandatory gap-2 lg:gap-4 pb-6 scroll-smooth"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         <style jsx>{`.carousel-viewport::-webkit-scrollbar { display: none; }`}</style>
@@ -81,7 +81,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                             <div
                                 key={index}
                                 data-card
-                                className="snap-start shrink-0"
+                                className="  shrink-0 "
                             >
                                 <div className="relative cursor-pointer overflow-hidden rounded-xl group transition-all duration-500">
 
