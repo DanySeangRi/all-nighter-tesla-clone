@@ -1,5 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Plus } from 'lucide-react';
+import Hero from '../ui/Hero';
+import { learnMoreSlide } from '../ui/heroData';
 
 export default function SlideCardModelY({ cards = [], title = [] }) {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,8 +52,12 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
     }, [cards.length, getItemWidth]);
 
     return (
-        <section className="w-full bg-white py-12 md:py-20">
-            <div className="mx-auto px-4 sm:px-6 md:px-8">
+
+        <section className="w-full">
+
+            <Hero data={learnMoreSlide} />
+
+            <div className="py-12 mx-auto sm:px-6 md:px-8 lg:py-18">
 
                 <div className="text-center mb-8 md:mb-12">
                     <h2 className="text-[40px] md:text-4xl font-semibold mb-2 ">{title.maintitle}</h2>
@@ -63,7 +69,7 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                     <div
                         ref={scrollRef}
                         onScroll={handleScroll}
-                        className="carousel-viewport flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 scroll-smooth"
+                        className="carousel-viewport flex overflow-x-auto snap-x snap-mandatory gap-2 lg:gap-4 pb-6 scroll-smooth"
                         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                     >
                         <style jsx>{`.carousel-viewport::-webkit-scrollbar { display: none; }`}</style>
@@ -75,13 +81,13 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                                 className="snap-start shrink-0"
                             >
                                 <div className="relative cursor-pointer overflow-hidden rounded-xl group transition-all duration-500">
-                                    
+
                                     <picture className="block w-84.5 h-129.5 lg:w-107 lg:h-124.5 overflow-hidden rounded-xl">
                                         <source className='max-w-177' media="(max-width: 768px)" srcSet={card.img.mobile} />
                                         <img
                                             src={card.img.desktop}
                                             alt={card.title}
-                                            className="min-h-124.5 object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+                                            className="h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                                             loading={index > 1 ? "lazy" : "eager"}
                                         />
                                     </picture>
@@ -92,8 +98,9 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                                         </h3>
                                     </div>
 
-                                    <div className="absolute top-4 right-4 p-2 rounded-full bg-white transition-transform duration-300 group-hover:scale-110">
-                                        <Plus className="text-gray-600" size={18} />
+                                    {/* Ensure the parent of this div has the "group" class */}
+                                    <div className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-white text-gray-600 transition-all duration-300 group-hover:outline-1 group-hover:outline-white group-hover:outline-offset-2 cursor-pointer ">
+                                        <Plus size={20} />
                                     </div>
                                 </div>
                             </div>
@@ -103,36 +110,34 @@ export default function SlideCardModelY({ cards = [], title = [] }) {
                     {/* Navigation Buttons: Visible by default, hidden only when disabled */}
                     <button
                         onClick={() => scrollToIndex(currentIndex - 1)}
-                        className={`absolute mx-15 left-2 md:-left-6 top-1/2 -translate-y-1/2 bg-white p-2 rounded-md shadow-lg z-10 transition-all duration-300 hover:bg-gray-100 ${
-                            currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                        }`}
+                        className={`absolute hidden md:block mx-10 left-2 md:-left-6 top-1/2 -translate-y-1/2 bg-white p-2 rounded-md shadow-lg z-10 transition-all duration-300 hover:bg-gray-100 ${currentIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                            }`}
                     >
                         <ChevronLeft size={24} />
                     </button>
 
                     <button
                         onClick={() => scrollToIndex(currentIndex + 1)}
-                        className={`absolute mx-15 right-2 md:-right-6 top-1/2 -translate-y-1/2 bg-white p-2 rounded-md shadow-lg z-10 transition-all duration-300 hover:bg-gray-100 ${
-                            currentIndex >= cards.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                        }`}
+                        className={`absolute hidden sm:block mx-10 right-2 md:-right-6 top-1/2 -translate-y-1/2 bg-white p-2 rounded-md shadow-lg z-10 transition-all duration-300 hover:bg-gray-100 ${currentIndex >= cards.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                            }`}
                     >
                         <ChevronRight size={24} />
                     </button>
                 </div>
 
                 {/* Pagination Dots */}
-                <div className="flex justify-center items-center gap-2 mt-4">
+                <div className="flex justify-center items-center gap-1 mt-4">
                     {cards.map((_, i) => (
                         <button
                             key={i}
                             onClick={() => scrollToIndex(i)}
-                            className={`cursor-pointer h-3 w-3 rounded-full transition-all duration-300 ${
-                                currentIndex === i ? 'bg-black' : 'bg-gray-300 hover:bg-gray-400'
-                            }`}
+                            className={`cursor-pointer h-3 w-3 rounded-full transition-all duration-300 ${currentIndex === i ? 'bg-black' : 'bg-gray-300 hover:bg-gray-400'
+                                }`}
                         />
                     ))}
                 </div>
             </div>
+
         </section>
     );
 }
