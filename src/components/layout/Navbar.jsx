@@ -3,7 +3,7 @@ import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
-
+import tesla2 from "../../../public/telsa.svg"
 import MegaMenu from "./MegaMenu";
 import MobileMenuContent from "./MobileMenuContent";
 
@@ -64,7 +64,7 @@ export default function Navbar() {
           <div
             className={`font-['Tesla'] text-xl uppercase tracking-[0.5em] block`}
           >
-            Tesla
+        <img src={tesla2} alt="" className="w-30" />
           </div>
 
           {/* DESKTOP MENU */}

@@ -4,7 +4,7 @@ import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoSearchOutline, IoCartOutline, IoMenuOutline } from "react-icons/io5";
-
+import tesla from "../../../public/telsa.svg"
 import ShopMegaMenu from "./ShopMegaMenu";
 import ShopMobileMenuContent from "./ShopMobileMenuContent";
 import ChargingAccessoriesDropdown from "./ChargingAccessoriesDropdown";
@@ -111,7 +111,9 @@ export default function ShopNavbar() {
         <div className="mx-auto flex h-14 items-center justify-between px-10">
           {/* LOGO */}
           <div className="flex items-center gap-6">
-            <span className="text-xl font-semibold font-['Tesla'] ">TESLA</span>
+            <span className="text-xl font-semibold  font-['steav']">
+              <img src={tesla} alt="" className="w-30"/>
+            </span>
             <span>|</span>
             <span className=" py-1 rounded  text-sm font-medium">Shop</span>
           </div>
