@@ -23,11 +23,12 @@ import shopChargingImg from "../../assets/images/navbar/Mega-Menu-Charging-Home-
 import accessoriesImg from "../../assets/images/navbar/Mega-Menu-Shop-Vehicle-Accessories.png";
 import apparelImg from "../../assets/images/navbar/Mega-Menu-Shop-Apparel.png";
 import lifestyleImg from "../../assets/images/navbar/Mega-Menu-Shop-Lifestyle.png";
-
+import { NavLink } from "react-router";
 
 // Data definitions (will be moved here from original files)
 const DROPDOWN_DATA = {
-  Charging: { // Changed key from 'charging' to 'Charging'
+  Charging: {
+    // Changed key from 'charging' to 'Charging'
     items: [
       { name: "Charging", img: chargingImg, learnOnly: true },
       { name: "Home Charging", img: homeChargingImg },
@@ -43,7 +44,8 @@ const DROPDOWN_DATA = {
       "Host a Supercharger",
     ],
   },
-  Vehicles: { // Changed key from 'vehicles' to 'Vehicles'
+  Vehicles: {
+    // Changed key from 'vehicles' to 'Vehicles'
     items: [
       { name: "Model S", img: modelSImg },
       { name: "Model 3", img: model3Img },
@@ -70,7 +72,8 @@ const DROPDOWN_DATA = {
       "Robotaxi",
     ],
   },
-  Energy: { // Changed key from 'energy' to 'Energy'
+  Energy: {
+    // Changed key from 'energy' to 'Energy'
     items: [
       { name: "Solar Panels", img: solarPanelImg },
       { name: "Solar Roof", img: solarRoofImg },
@@ -87,7 +90,8 @@ const DROPDOWN_DATA = {
       "Utilities",
     ],
   },
-  Discover: { // Changed key from 'discover' to 'Discover'
+  Discover: {
+    // Changed key from 'discover' to 'Discover'
     columns: [
       {
         heading: "Resources",
@@ -116,7 +120,8 @@ const DROPDOWN_DATA = {
       },
     ],
   },
-  Shop: { // Changed key from 'shop' to 'Shop'
+  Shop: {
+    // Changed key from 'shop' to 'Shop'
     items: [
       { name: "Charging", img: shopChargingImg },
       { name: "Vehicle Accessories", img: accessoriesImg },
@@ -126,8 +131,12 @@ const DROPDOWN_DATA = {
   },
 };
 
-
-export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave }) {
+export default function MegaMenu({
+  activeMenu,
+  open,
+  onMouseEnter,
+  onMouseLeave,
+}) {
   const [menuHeight, setMenuHeight] = useState(0);
   const contentRef = useRef(null);
 
@@ -141,12 +150,27 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
     }
   }, [activeMenu, data]); // Re-measure when activeMenu or its data changes
 
-  const renderImageGridWithLinks = (items, links, animationDelayFn, isActive) => (
+  const renderImageGridWithLinks = (
+    items,
+    links,
+    animationDelayFn,
+    isActive
+  ) => (
     <div className="mx-auto max-w-7xl py-14 ">
       <div className="grid grid-cols-[3fr_1fr] gap-10">
         {/* LEFT PRODUCTS */}
         <div className="grid grid-cols-4 gap-6">
-          {items.map((item, i) => (
+          {items.map((item,index) =>{
+             let link = "/";
+
+          if (index === 2) link = "/learnmore";
+   
+          
+          return(
+            <NavLink
+              to={link}
+              className="underline cursor-pointer px-2 py-1 rounded-lg"
+            >
             <div key={item.name} className="text-center">
               {/* IMAGE ONLY ANIMATION */}
               <div className="h-24 flex items-center justify-center overflow-hidden">
@@ -159,10 +183,10 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 -translate-y-8"
                     }
+                  
                   `}
                 />
               </div>
-
               {/* STATIC TEXT */}
               <h4 className="mt-3 text-[15px] font-medium text-[#171A20]">
                 {item.name}
@@ -170,16 +194,18 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
 
               <div className="mt-2 flex justify-center gap-4 text-[13px] text-[#5C5E62] underline">
                 {item.sub ? (
-                    item.sub.map((s) => <span key={s}>{s}</span>)
+                  item.sub.map((s) => <span key={s}>{s}</span>)
                 ) : (
-                    <>
-                        <span>Learn</span>
-                        {!item.learnOnly && <span>Order</span>}
-                    </>
+                  <>
+                    <span>Learn</span>
+                    {!item.learnOnly && <span>Order</span>}
+                  </>
                 )}
               </div>
             </div>
-          ))}
+            </NavLink>
+          )})}
+
         </div>
 
         {/* RIGHT LINKS (STATIC) */}
@@ -220,70 +246,83 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
   const renderShopLayout = (items) => (
     <div className="flex justify-center py-16">
       <div className="flex gap-10 text-center">
-        {items.map((item) => (
-          <div key={item.name} className="group cursor-pointer">
-            {/* IMAGE */}
-            <img
-              src={item.img}
-              alt={item.name}
-              className="h-28 mx-auto transition-transform duration-300 group-hover:scale-105"
-            />
+        {items.map((item, index) => {
+          let link = "/";
 
-            {/* LABEL */}
-            <p className="mt-6 text-[16px] font-medium text-[#171A20]">
-              {item.name}
-            </p>
-          </div>
-        ))}
+          if (index === 0) link = "/charging";
+          if (index === 1) link = "/vichleaccessories";
+          if (index === 2) link = "/apparel";
+           if (index === 3) link = "/lifestyle";
+          return (
+            <NavLink
+              to={link}
+              className="underline cursor-pointer px-2 py-1 rounded-lg"
+            >
+              <div key={item.name} className="group cursor-pointer">
+                {/* IMAGE */}
+
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  className="h-28 mx-auto transition-transform duration-300 group-hover:scale-105"
+                />
+
+                {/* LABEL */}
+                <p className="mt-6 text-[16px] font-medium text-[#171A20]">
+                  {item.name}
+                </p>
+              </div>
+            </NavLink>
+          );
+        })}
       </div>
     </div>
   );
 
-
   let content = null;
-  let transitionClass = "ease-out"; // Default transition, likely not needed anymore for outer container
-  let additionalContainerClasses = ''; // For discover layout's specific centering
+  // let transitionClass = "ease-out"; // Default transition, likely not needed anymore for outer container
+  let additionalContainerClasses = ""; // For discover layout's specific centering
 
-  if (activeMenu && data) { // Only render content if activeMenu is set and data exists
+  if (activeMenu && data) {
+    // Only render content if activeMenu is set and data exists
     switch (activeMenu) {
       case "Charging":
-          content = renderImageGridWithLinks(
-              data.items,
-              data.links,
-              (i) => `${i * 100}ms`,
-              activeMenu === "Charging"
-          );
-          break;
+        content = renderImageGridWithLinks(
+          data.items,
+          data.links,
+          (i) => `${i * 100}ms`,
+          activeMenu === "Charging"
+        );
+        break;
       case "Vehicles":
-          content = renderImageGridWithLinks(
-              data.items,
-              data.links,
-              (i) => `${i * 100}ms`, // Use 100ms delay as in original Dropdowns.jsx
-              activeMenu === "Vehicles"
-          );
-          break;
+        content = renderImageGridWithLinks(
+          data.items,
+          data.links,
+          (i) => `${i * 100}ms`, // Use 100ms delay as in original Dropdowns.jsx
+          activeMenu === "Vehicles"
+        );
+        break;
       case "Energy":
-          content = renderImageGridWithLinks(
-              data.items,
-              data.links,
-              (i) => `${i * 100}ms`,
-              activeMenu === "Energy"
-          );
-          break;
+        content = renderImageGridWithLinks(
+          data.items,
+          data.links,
+          (i) => `${i * 100}ms`,
+          activeMenu === "Energy"
+        );
+        break;
       case "Discover":
-          content = renderDiscoverLayout(data.columns);
-          transitionClass = "ease-initial";
-          additionalContainerClasses = 'flex justify-center'; // Apply to inner content wrapper if needed
-          break;
+        content = renderDiscoverLayout(data.columns);
+        // transitionClass = "ease-initial";
+        additionalContainerClasses = "flex justify-center"; // Apply to inner content wrapper if needed
+        break;
       case "Shop":
-          content = renderShopLayout(data.items);
-          transitionClass = "ease-out";
-          break;
+        content = renderShopLayout(data.items);
+        // transitionClass = "ease-out";
+        break;
       default:
-          content = null;
+        content = null;
     }
   }
-
 
   return (
     <div
@@ -299,7 +338,11 @@ export default function MegaMenu({ activeMenu, open, onMouseEnter, onMouseLeave 
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div key={activeMenu} ref={contentRef} className={`transition-opacity duration-200 custom-tesla-ease ${additionalContainerClasses}`}>
+      <div
+        key={activeMenu}
+        ref={contentRef}
+        className={`transition-opacity duration-200 custom-tesla-ease ${additionalContainerClasses}`}
+      >
         {data ? content : null}
       </div>
     </div>

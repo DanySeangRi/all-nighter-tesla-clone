@@ -1,14 +1,14 @@
-import React, { useState, useRef } from "react";
-import Hero from "../ui/Hero";
-import HomeShowcaseCard from "./HomeShowcaseCard";
-import { carModel as HomeShowcaseData } from "./data";
-import SlideIndicator from "../ui/SlideIndicator";
-import Button from "../ui/Button";
-import currentOffersImg from "../../assets/images/homepage/Homepage-Grid-Current-Offers.jpg";
-import americanHeroesImg from "../../assets/images/homepage/Homepage-Grid-American-Heroes-v2.jpg";
+import React, { useState, useRef } from 'react'
+import Hero from '../ui/Hero'
+import HomeShowcaseCard from './HomeShowcaseCard'
+import { carModel as HomeShowcaseData } from './data'
+import SlideIndicator from '../ui/SlideIndicator'
+import Button from '../ui/Button'
+import currentOffersImg from '../../assets/images/homepage/Homepage-Grid-Current-Offers.jpg'
+import americanHeroesImg from '../../assets/images/homepage/Homepage-Grid-American-Heroes-v2.jpg'
+import { NavLink } from 'react-router'
 import { americanBtn, cardBtn } from "../ui/uiStyle";
 import NavigationButtons from "../ui/NavigationButtons";
-
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef(null);
@@ -135,15 +135,19 @@ export default function HeroSection() {
                   name={item.name}
                   underline="underline"
                   description={item.description}
-                  width="w-82.5 lg:w-[606px] xl:w-[1024px]"
-                  height="h-130 lg:w-[520px] xl:h-[580px]"
-                  btn1={
-                    <Button title={cardBtn[0].title} css={cardBtn[0].css} />
-                  }
-                  btn2={
-                    <Button title={cardBtn[1].title} css={cardBtn[1].css} />
-                  }
-                />
+                  width='w-82.5 lg:w-[606px] xl:w-[1024px]'
+                  height='h-130 lg:w-[520px] xl:h-[580px]'
+                  btn1={<Button title= {cardBtn[0].title} css={cardBtn[0].css}/>}
+                    btn2={
+      index === 0 ? (
+        <NavLink to="/learnmore">
+          <Button title={cardBtn[1].title} css={cardBtn[1].css} />
+        </NavLink>
+      ) :  <Button title={cardBtn[1].title} css={cardBtn[1].css} />
+    }
+                />{
+                  
+                }
               </div>
             ))}
           </div>
@@ -172,7 +176,7 @@ export default function HeroSection() {
               <img
                 src={image}
                 alt={alt}
-                className="w-full h-full lg:w-[180px] object-cover"
+                className="w-full h-full lg:w-45 object-cover"
               />
             </div>
 

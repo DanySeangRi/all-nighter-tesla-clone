@@ -3,7 +3,8 @@ import { IoHelpCircleOutline, IoClose } from "react-icons/io5";
 import { SlGlobe } from "react-icons/sl";
 import { HiOutlineUserCircle } from "react-icons/hi2";
 import { IoIosArrowForward } from "react-icons/io";
-
+import tesla2 from "../../../public/telsa.svg"
+import { NavLink } from "react-router";
 import MegaMenu from "./MegaMenu";
 import MobileMenuContent from "./MobileMenuContent";
 
@@ -33,8 +34,8 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, [isMobileMenuOpen]); // Re-run effect if isMobileMenuOpen changes
 
   const menuItems = ["Vehicles", "Energy", "Charging", "Discover", "Shop"];
@@ -59,24 +60,36 @@ export default function Navbar() {
     <div className="relative ">
       {/* NAVBAR */}
       <nav className="fixed top-0 z-50 w-full bg-white">
-        <div className="mx-auto flex h-14 items-center justify-between px-10">
+        <div className="mx-auto flex h-14 items-center justify-between px-5 ">
           {/* LOGO */}
+           <NavLink to="/" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
           <div
-            className={`font-['Tesla'] text-xl uppercase tracking-[0.5em] block`}
+            className={`font-['Orbitron'] text-xl uppercase tracking-[0.5em] block`}
           >
-            Tesla
+             <img src={tesla2} alt="" className="w-30" />
           </div>
-
+        </NavLink>
           {/* DESKTOP MENU */}
           <ul className="hidden lg:flex text-sm font-medium">
-            {menuItems.map((item) => (
+            {menuItems.map((item, index) => (
               <li
                 key={item}
                 onMouseEnter={() => handleMouseEnter(item)}
                 onMouseLeave={handleMouseLeave}
                 className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
               >
-                {item}
+                {index === 4 ? (
+                  <NavLink
+                    to="/shop"
+                    className={({ isActive }) =>
+                      isActive ? "font-bold text-black" : "text-black"
+                    }
+                  >
+                    {item}
+                  </NavLink>
+                ) : (
+                  item
+                )}
               </li>
             ))}
           </ul>
@@ -120,7 +133,7 @@ export default function Navbar() {
           <div className="absolute top-0 right-0 h-14 flex items-center px-4 ">
             <button
               onClick={(e) => {
-                e.stopPropagation(); // Stop propagation to prevent closing menu when close button is clicked
+                e.stopPropagation();
                 setIsMobileMenuOpen(false);
                 setActiveMobileMenu(null);
               }}
@@ -162,7 +175,7 @@ export default function Navbar() {
 
               <div className="flex items-center justify-between px-4 py-4 rounded-lg hover:bg-gray-100">
                 <div className="flex items-center space-x-4 ">
-                  <HiOutlineUserCircle className="text-4"/>
+                  <HiOutlineUserCircle className="text-4" />
                   <span className="font-medium">Account</span>
                 </div>
                 <IoIosArrowForward className="text-gray-400" />
@@ -186,8 +199,8 @@ export default function Navbar() {
         <MegaMenu
           activeMenu={activeMenu}
           open={activeMenu !== null}
-          onMouseEnter={handleMegaMenuEnter} // Pass handler to MegaMenu
-          onMouseLeave={handleMouseLeave} // Pass handler to MegaMenu
+          onMouseEnter={handleMegaMenuEnter} 
+          onMouseLeave={handleMouseLeave}
         />
       )}
     </div>
