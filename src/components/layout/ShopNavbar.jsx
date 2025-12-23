@@ -11,6 +11,7 @@ import ChargingAccessoriesDropdown from "./ChargingAccessoriesDropdown";
 import ShopVehicleDropdown from "./ShopVehicleDropdown";
 import ShopApparelDropdown from "./ShopApparelDropdown";
 import LifestyleDropdown from "./LifestyleDropdown";
+import { NavLink } from "react-router-dom";
 
 export default function ShopNavbar() {
   const [activeMenu, setActiveMenu] = useState(null);
@@ -111,11 +112,16 @@ export default function ShopNavbar() {
         <div className="mx-auto flex h-14 items-center justify-between px-10">
           {/* LOGO */}
           <div className="flex items-center gap-6">
+           <NavLink to="/" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
             <span className="text-xl font-semibold  font-['steav']">
+
               <img src={tesla} alt="" className="w-30"/>
             </span>
+         </NavLink>
             <span>|</span>
+             <NavLink to="/shop" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > 
             <span className=" py-1 rounded  text-sm font-medium">Shop</span>
+             </NavLink>
           </div>
 
           {/* DESKTOP MENU */}
@@ -127,9 +133,9 @@ export default function ShopNavbar() {
                     key={item}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={() => handleMouseLeave()}
-                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                    className="px-4 py-2 rounded-sm cursor-pointer hover:bg-black/5 relative"
                   >
-                    <span className="">{item}</span>
+                      <NavLink to="/charging" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>
                 );
               } else if (item === "Vehicle Accessories") {
@@ -138,9 +144,9 @@ export default function ShopNavbar() {
                     key={item}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={() => handleMouseLeave()}
-                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                    className="px-4 py-2 rounded-sm cursor-pointer hover:bg-black/5 relative"
                   >
-                    <span className="">{item}</span>
+                     <NavLink to="/vichleaccessories" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>
                 );
               } else if (item === "Apparel") {
@@ -149,9 +155,9 @@ export default function ShopNavbar() {
                     key={item}
                     onMouseEnter={() => handleMouseEnter(item)}
                     onMouseLeave={() => handleMouseLeave()}
-                    className="px-4 py-2 rounded-sm cursor-pointer relative"
+                    className="px-4 py-2 rounded-sm cursor-pointer hover:bg-black/5 relative"
                   >
-                    <span className="">{item}</span>
+                     <NavLink to="/apparel" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>
                 );
               } else {
@@ -163,7 +169,7 @@ export default function ShopNavbar() {
                     onMouseLeave={() => handleMouseLeave()}
                     className="px-4 py-2 rounded-sm hover:bg-black/5 cursor-pointer"
                   >
-                    {item}
+                    <NavLink to="/lifestyle" className={({ isActive }) => isActive ? "font-bold text-black" : "text-black" } > {item} </NavLink>
                   </li>
                 );
               }

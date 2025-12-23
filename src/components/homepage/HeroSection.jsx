@@ -1,6 +1,6 @@
-import React from 'react';
-import useScroll from '../../../hooks/useScroll';
-import OrderButton from './OrderButton';
+import React from "react";
+import useScroll from "../../../hooks/useScroll";
+import OrderButton from "./OrderButton";
 
 export default function HeroSection({
   title,
@@ -29,7 +29,9 @@ export default function HeroSection({
         {/* Title */}
         <div
           className={`transform transition-all duration-1000 ease-in-out ${
-            isScrolled ? '-translate-y-16 opacity-0' : 'translate-y-0 opacity-100'
+            isScrolled
+              ? "-translate-y-16 opacity-0"
+              : "translate-y-0 opacity-100"
           }`}
         >
           <h1 className="text-5xl font-bold">{title}</h1>
@@ -40,7 +42,7 @@ export default function HeroSection({
         {showButtons && (
           <div
             className={`flex flex-col sm:flex-row gap-4 transition-opacity duration-700 ease-in-out ${
-              isScrolled ? 'opacity-0' : 'opacity-100'
+              isScrolled ? "opacity-0" : "opacity-100"
             }`}
           >
             <OrderButton theme="light" text="Explore Inventory" />
