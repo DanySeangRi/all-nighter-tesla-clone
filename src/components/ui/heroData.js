@@ -27,29 +27,12 @@ import ModelYPerformanceTablet from "../../assets/images/learn-more/Model-Y-Perf
 import ModelYPerformanceDesktop from "../../assets/images/learn-more/Model-Y-Performance-Hero-Carousel-Slide-2-Desktop.avif";
 
 
+//Cybertruck Logo
+import cyberLogo from "../../assets/images/homepage/cybertruck-640w.webp"
+
 
 export const fallbackSlides = [
     {
-        title: "Model Y",
-        subtitle: "Order Online for Touchless Delivery",
-        date: "",
-        button1: "Custom Order",
-        button2: "Existing Inventory",
-        images: {
-            mobile: ModelYMobile,
-            tablet: ModelYTablet,
-            desktop: ModelYDesktop,
-        },
-    title: "Model Y",
-    subtitle: "Order Online for Touchless Delivery",
-    date: "",
-    button1: "Custom Order",
-    button2: "Existing Inventory",
-    images: {
-        mobile: ModelYMobile,
-        tablet: ModelYTablet,
-        desktop: ModelYDesktop,
-        },
     title: "Model Y",
     subtitle: "Lease Price Increase on December 26",
     date: "",
@@ -62,30 +45,8 @@ export const fallbackSlides = [
         },
     },
     {
-        title: "Model 3",
-        subtitle: "Order Online for Touchless Delivery",
-        date: "",
-        button1: "Custom Order",
-        button2: "Existing Inventory",
-        images: {
-            mobile: Model3Mobile,
-            tablet: Model3Tablet,
-            desktop: Model3Desktop,
-        },
-    },
-    {
-        title: "Cybertruck",
-        subtitle: "Order Online for Touchless Delivery",
-        date: "",
-        button1: "Custom Order",
-        button2: "Existing Inventory",
-        images: {
-            mobile: CybertruckMobile,
-            tablet: CybertruckTablet,
-            desktop: CybertruckDesktop,
-        },
-    title: "Cybertruck",
-    subtitle: "Order Online for Touchless Delivery",
+    titleLogo: cyberLogo,
+    subtitle: "Lease Price Increase on December 26",
     date: "",
     button1: "Order Now",
     button2: "View Inventory",
@@ -96,6 +57,7 @@ export const fallbackSlides = [
         },
     },
 ];
+
 
 export const learnMoreSlide = [
     {
