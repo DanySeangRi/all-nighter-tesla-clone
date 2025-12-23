@@ -30,7 +30,7 @@ const VideoDisplay = ({
     return <div className={className}>Video not found for ID: {id}</div>;
   }
 
-  const videoContainerClasses = `relative w-full overflow-hidden mt-20 mb-20 mx-auto group ${id === "small-card" ? 'max-w-[1116px] ' : 'max-w-[1344px]'} ${className}`;
+  const videoContainerClasses = `relative w-full overflow-hidden mt-20 mb-20 mx-auto group ${id === "small-card" ? 'max-w-[1116px] ' : 'max-w-[2463px]'} ${className}`;
 
   // Responsive button positioning: top-right for mobile (430px), bottom-left for desktop (1440px)
   const responsiveButtonClasses = "top-7 right-7 xl:bottom-7 xl:top-auto xl:right-auto xl:left-7";
