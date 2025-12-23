@@ -68,8 +68,8 @@ const TeslaSpecCard = () => {
 
   return (
     <div className="bg-black text-white">
-      {/* ================= HERO VIDEO ================= */}
-      <div className="bg-white text-black py-10">
+      {/*VIDEO  */}
+      <div className="bg-white text-black pt-17.5 lg:pt-38">
         <div className=" md:px-10">
           <div className="mb-16">
             <Video
@@ -82,7 +82,7 @@ const TeslaSpecCard = () => {
           </div>
         </div>
 
-        {/* ================= TITLE ================= */}
+     
         <div className="px-6 mb-30 sm:px-10 2xl:px-40">
           <h2 className="text-[40px] sm:text-4xl 2xl:text-5xl font-bold md:px-20">
             The Future of Travel Is Autonomous
@@ -190,7 +190,7 @@ const TeslaSpecCard = () => {
         </div>
 
         {/* Footer */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:block">
+        <div className="absolute bottom-1 left-1/2 -translate-x-1/2 hidden lg:block">
           <Footer />
         </div>
       </div>
