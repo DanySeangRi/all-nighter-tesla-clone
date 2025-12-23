@@ -62,7 +62,7 @@ export default function Navbar() {
         <div className="mx-auto flex h-14 items-center justify-between px-10">
           {/* LOGO */}
           <div
-            className={`font-['Tesla'] text-xl uppercase tracking-[0.5em] block`}
+            className={`font-['Orbitron'] text-xl uppercase tracking-[0.5em] block`}
           >
         <img src={tesla2} alt="" className="w-30" />
           </div>
@@ -120,7 +120,7 @@ export default function Navbar() {
           <div className="absolute top-0 right-0 h-14 flex items-center px-4 ">
             <button
               onClick={(e) => {
-                e.stopPropagation(); // Stop propagation to prevent closing menu when close button is clicked
+                e.stopPropagation();
                 setIsMobileMenuOpen(false);
                 setActiveMobileMenu(null);
               }}
@@ -186,8 +186,8 @@ export default function Navbar() {
         <MegaMenu
           activeMenu={activeMenu}
           open={activeMenu !== null}
-          onMouseEnter={handleMegaMenuEnter} // Pass handler to MegaMenu
-          onMouseLeave={handleMouseLeave} // Pass handler to MegaMenu
+          onMouseEnter={handleMegaMenuEnter} 
+          onMouseLeave={handleMouseLeave}
         />
       )}
     </div>

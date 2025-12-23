@@ -1,14 +1,7 @@
 import React from "react";
-import ShopNavbar from "./components/layout/ShopNavbar";
-import Navbar from "./components/layout/Navbar";
-
-
+import LearnMore from "../pages/LearnMore";
 export default function App() {
-  return (
-    <>
-    <Navbar/>
-    </>
-  );
+  return <>
+  <LearnMore/>
+  </>;
 }
-
-

@@ -59,6 +59,8 @@ export default function Hero({ data = [], autoPlayTime = 4000 }) {
           totalSlides={slides.length}
           currentIndex={currentIndex}
           onSlideChange={goToSlide}
+          activeColor="bg-white cursor-pointer"
+          inactiveColor={"bg-gray-100/20 cursor-pointer"}
         />
 
         {/* Navigation Btn */}
