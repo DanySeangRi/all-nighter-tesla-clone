@@ -2,6 +2,11 @@ import React from "react";
 import FeatureVideo from "./FeatureVideo";
 import InfoCard from "./InfoCard";
 import { learnMoreData, affordabilityData, connected } from "./learnMoreData";
+import MusicDesktop from "../../assets/images/learn-more/Model-Y-Standard-Music-Desktop.jpg";
+import GameDesktop from "../../assets/images/learn-more/Model-Y-Standard-Game-Desktop.avif";
+import RangeDesktop from "../../assets/images/learn-more/Model-Y-Standard-Range-Desktop.avif";
+import AffordableDesktop from "../../assets/images/learn-more/Model-Y-Standard-Affordable-Desktop.avif";
+import SafetyDesktop from "../../assets/images/learn-more/Model-Y-Standard-Safety-Desktop.avif";
 const ModelYFeatures = () => {
   return (
     <section>
@@ -70,7 +75,7 @@ const ModelYFeatures = () => {
           <div className="w-full lg:w-[70%] order-1 lg:order-2">
             <div className="w-full h-92.25 xl:h-132 bg-amber-400 relative rounded-xl overflow-hidden">
               <img
-                src="/src/assets/images/learn-more/Model-Y-Standard-Music-Desktop.jpg"
+                src={MusicDesktop}
                 alt="Turn Up the Music"
                 className="w-full h-full object-cover rounded-xl"
               />
@@ -93,7 +98,7 @@ const ModelYFeatures = () => {
           <div className="w-full lg:w-[70%] order-1 lg:order-2">
             <div className="w-full h-92.25 xl:h-132 bg-amber-400 relative rounded-xl overflow-hidden">
               <img
-                src="/src/assets/images/learn-more/Model-Y-Standard-Game-Desktop.avif"
+                src={GameDesktop}
                 alt="Game Anywhere"
                 className="w-full h-full object-cover rounded-xl"
               />
@@ -130,7 +135,7 @@ const ModelYFeatures = () => {
           <div className="px-0 md:px-12">
             <div className="w-full h-122.5  lg:h-212.5  min-[1440px]:h-145 mx-auto bg-amber-400 relative rounded-none md:rounded-xl overflow-hidden">
               <img
-                src="/src/assets/images/learn-more/Model-Y-Standard-Range-Desktop.avif"
+                src={RangeDesktop}
                 alt="All the Range You Need"
                 className="w-full h-full object-cover rounded-none md:rounded-xl"
               />
@@ -195,7 +200,7 @@ const ModelYFeatures = () => {
           <div className="px-0 md:px-12">
             <div className="w-full h-122.5 min-[1440px]:min-w-336 min-[1440px]:h-168 mx-auto bg-amber-400 relative rounded-none md:rounded-xl overflow-hidden">
               <img
-                src="/src/assets/images/learn-more/Model-Y-Standard-Affordable-Desktop.avif"
+                src={AffordableDesktop}
                 alt="More Affordable Than a Gas Car"
                 className="w-full h-full object-cover rounded-none md:rounded-xl"
               />
@@ -237,7 +242,7 @@ const ModelYFeatures = () => {
             <div className="w-full lg:w-full order-1 lg:order-2">
               <div className="w-full h-92.25 xl:h-150 bg-amber-400 relative rounded-xl overflow-hidden">
                 <img
-                  src="/src/assets/images/learn-more/Model-Y-Standard-Safety-Desktop.avif"
+                  src={SafetyDesktop}
                   alt="Engineered for Your Safety"
                   className="w-full h-full object-cover rounded-xl"
                 />
