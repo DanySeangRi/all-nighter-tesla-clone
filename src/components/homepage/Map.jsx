@@ -82,7 +82,7 @@ const Map = () => {
                 {/* Destination */}
                 <div className="flex items-center gap-4">
                   <div>
-                    <div className="text-3xl sm:text-4xl font-medium text-gray-900">
+                    <div className="text-3xl sm:text-4xl xl:text-5xl font-medium text-gray-900">
                       30,094
                     </div>
                     <div className="text-xs sm:text-sm text-gray-600 mt-1">
