@@ -1,1 +1,23 @@
 @import "tailwindcss";
+@font-face {
+  font-family: "steav";
+  font-style: normal;
+  font-weight: normal;
+  src: local("TESLA Regular"), url("TESLA.woff") format("woff");
+}
+:root {
+  --transition-custom-tesla-ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-tesla-ease {
+  transition-timing-function: var(--transition-custom-tesla-ease);
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE & Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
