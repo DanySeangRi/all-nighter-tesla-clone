@@ -21,7 +21,7 @@ const americanBtn =[
   {title: "Learn More ",css: ` bg-white h-10 w-[252px] `,},];
 
 const btnShopHero =[
-  {title: "Shop Now",css: ` bg-white h-10 py-4 px-6 w-[382px] sm:w-[283px]  `,},];
+  {title: "Shop Now",css: ` bg-white h-10 py-4 px-6 w-[382px] sm:w-[273px]  `,},];
 const btnShopCard =[
   {title: "Shop Now",css: ` bg-white h-10 py-4 px-6 w-[382px] sm:w-[121.5px] border-2  `,},];
 
