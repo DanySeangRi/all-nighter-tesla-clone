@@ -7,9 +7,6 @@ export default function ScrollToTop() {
   useEffect(() => {
     // Instant scroll to top (like a real page load)
     window.scrollTo(0, 0);
-
-    // Optional: smooth scroll animation instead
-    // window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
 
   return null;
