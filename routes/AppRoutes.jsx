@@ -9,10 +9,12 @@ import ShopNavbar from "../src/components/layout/ShopNavbar";
 import Home from "../pages/Home";
 import LearnMore from "../pages/LearnMore";
 import Navbar from "../src/components/layout/Navbar";
+import ScrollToTop from "./ScrollToTop";
 export default function AppRoutes() {
   return (
     <>
       <ShopNavbar />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/learnmore" element={<LearnMore />} />
