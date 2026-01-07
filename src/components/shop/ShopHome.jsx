@@ -1,3 +1,6 @@
+
+import {btnShopHero} from '../ui/uiStyle'
+import Button from '../ui/Button'
 export default function ShopHome({
   desktopImage,
   mobileImage,
@@ -25,10 +28,8 @@ export default function ShopHome({
         >
           {title}
         </h2>
-
-        <button className="bg-white text-black text-sm font-bold px-10 py-2 rounded-sm w-full max-w-md">
-          Shop now
-        </button>
+      
+        <Button title={btnShopHero[0].title} css={btnShopHero[0].css}></Button>
       </div>
     </div>
   );
